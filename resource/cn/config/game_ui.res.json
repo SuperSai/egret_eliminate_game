@@ -5,7 +5,7 @@
 			"name": "login"
 		},
 		{
-			"keys": "battle_json",
+			"keys": "battle_json,battleIcon_json",
 			"name": "battle"
 		},
 		{
@@ -36,6 +36,12 @@
 			"type": "sheet",
 			"name": "battle_json",
 			"subkeys": "battle_black,battle_blue,battle_green,battle_npc,battle_red"
+		},
+		{
+			"url": "cn/asset/atlas/battle/battleIcon.json",
+			"type": "sheet",
+			"name": "battleIcon_json",
+			"subkeys": "battle_icon_0,battle_icon_1,battle_icon_2,battle_icon_3,battle_icon_4,battle_icon_5,battle_icon_6,battle_icon_bomb,battle_icon_max,battle_icon_s_0,battle_icon_s_1,battle_icon_s_2,battle_icon_s_3,battle_icon_s_4,battle_icon_s_5,battle_icon_s_6"
 		}
 	]
 }

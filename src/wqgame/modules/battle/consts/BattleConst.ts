@@ -4,4 +4,7 @@ class BattleConst {
 
 	/** 选择战斗关卡 */
 	public static BATTLE_SELECT_LEVEL: number = 11001;
+
+	/** 进入战斗关卡 */
+	public static BATTLE_ENTER_MISSION: number = 11002;
 }

@@ -8,6 +8,8 @@ var BattleConst = (function () {
     BattleConst.BATTLE_INIT = 11000;
     /** 选择战斗关卡 */
     BattleConst.BATTLE_SELECT_LEVEL = 11001;
+    /** 进入战斗关卡 */
+    BattleConst.BATTLE_ENTER_MISSION = 11002;
     return BattleConst;
 }());
 __reflect(BattleConst.prototype, "BattleConst");

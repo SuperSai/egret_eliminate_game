@@ -18,7 +18,8 @@ class BattleController extends BaseController {
 
 		//注册模块消息
 		self.registerFunc(BattleConst.BATTLE_INIT, self.onBattleInit, self);
-		self.registerFunc(BattleConst.BATTLE_SELECT_LEVEL, self.onEnterLevelView, self);
+		self.registerFunc(BattleConst.BATTLE_SELECT_LEVEL, self.onShowMissionPanel, self);
+		self.registerFunc(BattleConst.BATTLE_ENTER_MISSION, self.onEnterBattleMission, self);
 	}
 
 	private onBattleInit(param: any[]): void {
@@ -31,12 +32,19 @@ class BattleController extends BaseController {
 	/** 注册界面才可以打开界面 */
 	private initRegisterView(): void {
 		let self = this;
+		App.ViewManager.register(ViewConst.MissionPanel, new MissionPanel(self, LayerManager.GAME_UI_LAYER));
 	}
 
-	/** 进入关卡界面 */
-	private onEnterLevelView(index: number): void {
+	/** 显示关卡面板 */
+	private onShowMissionPanel(mission: number): void {
 		let self = this;
-		Log.trace("index:" + index);
+		App.ViewManager.open(ViewConst.MissionPanel, mission);
+	}
+
+	/** 进入战斗关卡 */
+	private onEnterBattleMission(mission: number): void {
+		let self = this;
+
 	}
 
 }

@@ -5,6 +5,7 @@ var ViewConst;
     ViewConst[ViewConst["Hall"] = 10002] = "Hall";
     /***************** 战斗相关 start *****************/
     ViewConst[ViewConst["Battle"] = 20000] = "Battle";
+    ViewConst[ViewConst["MissionPanel"] = 20001] = "MissionPanel";
     /***************** 战斗相关 end *****************/
 })(ViewConst || (ViewConst = {}));
 //# sourceMappingURL=ViewConst.js.map

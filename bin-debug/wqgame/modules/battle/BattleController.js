@@ -20,7 +20,8 @@ var BattleController = (function (_super) {
         self._battleProxy = new BattleProxy(self);
         //注册模块消息
         self.registerFunc(BattleConst.BATTLE_INIT, self.onBattleInit, self);
-        self.registerFunc(BattleConst.BATTLE_SELECT_LEVEL, self.onEnterLevelView, self);
+        self.registerFunc(BattleConst.BATTLE_SELECT_LEVEL, self.onShowMissionPanel, self);
+        self.registerFunc(BattleConst.BATTLE_ENTER_MISSION, self.onEnterBattleMission, self);
         return _this;
     }
     BattleController.prototype.onBattleInit = function (param) {
@@ -32,11 +33,16 @@ var BattleController = (function (_super) {
     /** 注册界面才可以打开界面 */
     BattleController.prototype.initRegisterView = function () {
         var self = this;
+        App.ViewManager.register(ViewConst.MissionPanel, new MissionPanel(self, LayerManager.GAME_UI_LAYER));
     };
-    /** 进入关卡界面 */
-    BattleController.prototype.onEnterLevelView = function (index) {
+    /** 显示关卡面板 */
+    BattleController.prototype.onShowMissionPanel = function (mission) {
         var self = this;
-        Log.trace("index:" + index);
+        App.ViewManager.open(ViewConst.MissionPanel, mission);
+    };
+    /** 进入战斗关卡 */
+    BattleController.prototype.onEnterBattleMission = function (mission) {
+        var self = this;
     };
     return BattleController;
 }(BaseController));

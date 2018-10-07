@@ -37,6 +37,7 @@ var MapBtnItem = (function (_super) {
     /** 初始化状态 */
     MapBtnItem.prototype.initState = function () {
         var self = this;
+        self._isListener = true;
         if (parseInt(self.txt_index.text) == self._model.currMission) {
             self.itemImg.source = "battle_blue";
         }
@@ -47,6 +48,7 @@ var MapBtnItem = (function (_super) {
             self.itemImg.source = "battle_green";
         }
         else {
+            self._isListener = false;
             self.itemImg.source = "battle_black";
         }
     };
@@ -63,7 +65,11 @@ var MapBtnItem = (function (_super) {
     /** 选择关卡 */
     MapBtnItem.prototype.onSelectLevel = function () {
         var self = this;
-        App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.BATTLE_SELECT_LEVEL, parseInt(self.txt_index.text));
+        if (self._isListener) {
+            App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.BATTLE_SELECT_LEVEL, parseInt(self.txt_index.text));
+            return;
+        }
+        App.MessageManger.showText(App.LanguageManager.getLanguageText("battle.txt.02"));
     };
     return MapBtnItem;
 }(BaseEuiItem));

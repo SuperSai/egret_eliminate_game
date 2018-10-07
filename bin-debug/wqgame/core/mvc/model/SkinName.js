@@ -12,6 +12,7 @@ var SkinName = (function () {
     SkinName.BattleMapSkin = "resource/skins/battle/BattleMapSkin.exml";
     SkinName.BattleViewSkin = "resource/skins/battle/BattleViewSkin.exml";
     SkinName.MapBtnItemSkin = "resource/skins/battle/item/MapBtnItemSkin.exml";
+    SkinName.MissionPanelSkin = "resource/skins/battle/panel/MissionPanelSkin.exml";
     return SkinName;
 }());
 __reflect(SkinName.prototype, "SkinName");

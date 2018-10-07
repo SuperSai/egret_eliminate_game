@@ -15,5 +15,7 @@ class SkinName {
 
 	public static MapBtnItemSkin: string = "resource/skins/battle/item/MapBtnItemSkin.exml";
 
+	public static MissionPanelSkin: string = "resource/skins/battle/panel/MissionPanelSkin.exml";
+
 
 }

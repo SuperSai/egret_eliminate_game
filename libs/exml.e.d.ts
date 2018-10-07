@@ -4,6 +4,8 @@ declare class BattleViewSkin extends eui.Skin{
 }
 declare class MapBtnItemSkin extends eui.Skin{
 }
+declare class MissionPanelSkin extends eui.Skin{
+}
 declare class ButtonComSkin extends eui.Skin{
 }
 declare class CurrencyComSkin extends eui.Skin{
