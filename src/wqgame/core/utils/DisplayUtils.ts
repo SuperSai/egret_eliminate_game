@@ -200,9 +200,10 @@ class DisplayUtils extends BaseClass {
         }, this, RES.ResourceItem.TYPE_IMAGE);
     }
 
-    public addAsyncBitmapToImage(path: string, img: eui.Image) {
+    public addAsyncBitmapToImage(path: string, img: eui.Image, callBack: Function = null) {
         RES.getResByUrl(path, () => {
             img.source = RES.getRes(path);
+            if (callBack) callBack();
         }, this, RES.ResourceItem.TYPE_IMAGE);
     }
 

@@ -11,7 +11,7 @@ class ButtonCom extends BaseEuiItem {
 		super.dataChanged();
 	}
 
-	public onAwake($data: any = null): void {
-		super.onAwake($data);
+	public onAwake(...param: any[]): void {
+		super.onAwake(param);
 	}
 }

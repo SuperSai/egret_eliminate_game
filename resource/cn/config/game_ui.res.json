@@ -5,7 +5,7 @@
 			"name": "login"
 		},
 		{
-			"keys": "",
+			"keys": "battle_json",
 			"name": "battle"
 		},
 		{
@@ -30,6 +30,12 @@
 			"type": "sheet",
 			"name": "hallIcons_json",
 			"subkeys": "activity_icon,bag_icon,battle_icon,black_icon,copy_icon,firstCharge_icon,heros_icon,jade_icon,luckDraw_icon,more_icon,rank_icon,recharge_icon,shop_icon,sign_icon,task_icon"
+		},
+		{
+			"url": "cn/asset/atlas/battle/battle.json",
+			"type": "sheet",
+			"name": "battle_json",
+			"subkeys": "battle_black,battle_blue,battle_green,battle_npc"
 		}
 	]
 }

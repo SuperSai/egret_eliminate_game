@@ -18,6 +18,7 @@ class BattleController extends BaseController {
 
 		//注册模块消息
 		self.registerFunc(BattleConst.BATTLE_INIT, self.onBattleInit, self);
+		self.registerFunc(BattleConst.BATTLE_SELECT_LEVEL, self.onEnterLevelView, self);
 	}
 
 	private onBattleInit(param: any[]): void {
@@ -30,6 +31,12 @@ class BattleController extends BaseController {
 	/** 注册界面才可以打开界面 */
 	private initRegisterView(): void {
 		let self = this;
+	}
+
+	/** 进入关卡界面 */
+	private onEnterLevelView(index: number): void {
+		let self = this;
+		Log.trace("index:" + index);
 	}
 
 }

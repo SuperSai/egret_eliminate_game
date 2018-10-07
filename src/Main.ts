@@ -54,6 +54,7 @@ class Main extends eui.UILayer {
         //适配方式(全屏适配)
         App.StageUtils.startFullscreenAdaptation(720, 1280, null);
         App.StageUtils.setFrameRate(60);
+        App.StageUtils.setScaleMode(egret.StageScaleMode.FIXED_WIDTH);
         App.LayerManager.setup(App.StageUtils.getStage());
     }
     /** 初始化平台 */

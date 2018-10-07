@@ -13,7 +13,7 @@ class SkinName {
 
 	public static BattleViewSkin: string = "resource/skins/battle/BattleViewSkin.exml";
 
-
+	public static MapBtnItemSkin: string = "resource/skins/battle/item/MapBtnItemSkin.exml";
 
 
 }

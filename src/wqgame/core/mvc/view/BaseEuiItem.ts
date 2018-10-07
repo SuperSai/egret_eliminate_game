@@ -19,7 +19,7 @@ class BaseEuiItem extends eui.ItemRenderer {
 		super.dataChanged();
 	}
 
-	public onAwake($data: any = null): void {
+	public onAwake($data: any): void {
 		let self = this;
 		self.data = $data;
 	}

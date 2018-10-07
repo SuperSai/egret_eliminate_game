@@ -12,7 +12,7 @@ class ObjectUtils {
     public static copyValue(obj: Object, value: Object): void {
         for (var key in value) {
             var attrValue = value[key];
-            var attrType: string = egret.getQualifiedClassName(attrValue);
+            // var attrType: string = egret.getQualifiedClassName(attrValue);
             var baseType: boolean = this.isBaseType(value[key]);
             if (baseType) {
                 obj[key] = value[key];
@@ -49,6 +49,28 @@ class ObjectUtils {
                 obj[key] = value[key];
             }
         }
+    }
+
+    /**
+     * 深度复制
+    */
+    public copyDataHandler(obj: any): any {
+        var newObj;
+        if (obj instanceof Array) {
+            newObj = [];
+        }
+        else if (obj instanceof Object) {
+            newObj = {};
+        }
+        else {
+            return obj;
+        }
+        var keys = Object.keys(obj);
+        for (var i: number = 0, len = keys.length; i < len; i++) {
+            var key = keys[i];
+            newObj[key] = this.copyDataHandler(obj[key]);
+        }
+        return newObj;
     }
 
     /** 数据列表拷贝 */
