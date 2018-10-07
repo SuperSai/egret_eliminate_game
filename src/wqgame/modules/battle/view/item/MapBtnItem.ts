@@ -1,9 +1,11 @@
 class MapBtnItem extends BaseEuiItem {
 
+	public btn_level: eui.Group;
 	public itemImg: eui.Image;
 	public txt_index: eui.Label;
 
 	private _mapIndex: number;
+	private _model: BattleModel;
 
 	public constructor() {
 		super(SkinName.MapBtnItemSkin);
@@ -14,6 +16,7 @@ class MapBtnItem extends BaseEuiItem {
 		super.onAwake($data);
 		let self = this;
 		self.init();
+		self.initState();
 		self.initPosition();
 		self.addEvents();
 	}
@@ -22,6 +25,7 @@ class MapBtnItem extends BaseEuiItem {
 	private init(): void {
 		let self = this;
 		self._mapIndex = self.data[0];
+		self._model = self.data[4];
 		self.txt_index.text = self._mapIndex * 2 * 10 + self.data[1] + "";
 	}
 
@@ -32,22 +36,36 @@ class MapBtnItem extends BaseEuiItem {
 		self.y = self.data[3];
 	}
 
+	/** 初始化状态 */
+	private initState(): void {
+		let self = this;
+		if (parseInt(self.txt_index.text) == self._model.currMission) {	//当前选中关卡
+			self.itemImg.source = "battle_blue";
+		} else if (parseInt(self.txt_index.text) == (self._model.passMission + 1)) { //需要通关的关卡
+			self.itemImg.source = "battle_red";
+		} else if (parseInt(self.txt_index.text) <= self._model.passMission) {	//所以已经通关的关卡
+			self.itemImg.source = "battle_green";
+		} else {	//没有通关的关卡
+			self.itemImg.source = "battle_black";
+		}
+	}
+
 	public addEvents(): void {
 		let self = this;
-		self.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onSelectLevel, self);
+		self.btn_level.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onSelectLevel, self);
+		self.setBtnEffect(["btn_level"]);
 	}
 
 
 	public removeEvents(): void {
 		super.removeEvents();
 		let self = this;
-		self.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onSelectLevel, self);
+		self.btn_level.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onSelectLevel, self);
 	}
 
 	/** 选择关卡 */
 	private onSelectLevel(): void {
 		let self = this;
-		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.BATTLE_SELECT_LEVEL, self._mapIndex);
+		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.BATTLE_SELECT_LEVEL, parseInt(self.txt_index.text));
 	}
-
 }

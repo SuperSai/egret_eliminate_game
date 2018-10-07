@@ -7,6 +7,10 @@ class BattleModel extends BaseModel {
 	public maxMapCount: number = 15;
 	/** 开放的地图数量 */
 	public openMapCount: number = 2;
+	/** 当前关卡 */
+	public currMission: number = 1;
+	/** 通关的关卡 */
+	public passMission: number = 2;
 
 	public constructor($controller: BaseController) {
 		super($controller)

@@ -50,10 +50,10 @@ var BattleMap = (function (_super) {
         var self = this;
         var posList = [[588, 1060], [424, 1064], [311, 1162]];
         for (var i = 0; i < posList.length; i++) {
-            var levelItem = new MapBtnItem();
+            var levelItem = ObjectPool.pop(MapBtnItem, "MapBtnItem");
             levelItem.anchorOffsetX = 45;
             levelItem.anchorOffsetY = 45;
-            levelItem.onAwake([index - 1, i + 1, posList[i][0], posList[i][1]]);
+            levelItem.onAwake([index - 1, i + 1, posList[i][0], posList[i][1], self._model]);
             mapCon.addChild(levelItem);
         }
     };
@@ -81,7 +81,7 @@ var BattleMap = (function (_super) {
     BattleMap.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
         var self = this;
-        App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
+        // App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
     };
     BattleMap.prototype.removeEvents = function () {
         _super.prototype.removeEvents.call(this);

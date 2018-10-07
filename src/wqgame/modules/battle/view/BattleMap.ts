@@ -43,10 +43,10 @@ class BattleMap extends BaseEuiView {
 		let self = this;
 		let posList: any[] = [[588, 1060], [424, 1064], [311, 1162]];
 		for (let i: number = 0; i < posList.length; i++) {
-			let levelItem: MapBtnItem = new MapBtnItem();
+			let levelItem: MapBtnItem = ObjectPool.pop(MapBtnItem, "MapBtnItem");
 			levelItem.anchorOffsetX = 45;
 			levelItem.anchorOffsetY = 45;
-			levelItem.onAwake([index - 1, i + 1, posList[i][0], posList[i][1]]);
+			levelItem.onAwake([index - 1, i + 1, posList[i][0], posList[i][1], self._model]);
 			mapCon.addChild(levelItem);
 		}
 	}
@@ -77,7 +77,7 @@ class BattleMap extends BaseEuiView {
 	public addEvents(): void {
 		super.addEvents();
 		let self = this;
-		App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
+		// App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
 	}
 
 	public removeEvents(): void {

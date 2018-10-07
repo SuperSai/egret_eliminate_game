@@ -16,6 +16,10 @@ var BattleModel = (function (_super) {
         _this.maxMapCount = 15;
         /** 开放的地图数量 */
         _this.openMapCount = 2;
+        /** 当前关卡 */
+        _this.currMission = 1;
+        /** 通关的关卡 */
+        _this.passMission = 2;
         var self = _this;
         self.init();
         return _this;

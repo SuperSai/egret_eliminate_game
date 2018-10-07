@@ -1,4 +1,5 @@
 {"file":"battle.png","frames":{
+"battle_red":{"x":92,"y":184,"w":90,"h":90,"offX":0,"offY":0,"sourceW":90,"sourceH":90},
 "battle_black":{"x":0,"y":108,"w":90,"h":90,"offX":0,"offY":0,"sourceW":90,"sourceH":90},
 "battle_blue":{"x":92,"y":92,"w":90,"h":90,"offX":0,"offY":0,"sourceW":90,"sourceH":90},
 "battle_green":{"x":92,"y":0,"w":90,"h":90,"offX":0,"offY":0,"sourceW":90,"sourceH":90},

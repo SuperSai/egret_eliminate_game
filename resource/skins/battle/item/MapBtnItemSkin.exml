@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="MapBtnItemSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="itemImg" source="battle_json.battle_black" horizontalCenter="0" verticalCenter="0"/>
-	<e:Label id="txt_index" text="0" horizontalCenter="0.5" verticalCenter="-11" textAlign="center" verticalAlign="middle"/>
+	<e:Group id="btn_level" horizontalCenter="0" verticalCenter="0" name="btn_level_1#1" touchChildren="false">
+		<e:Image id="itemImg" source="battle_json.battle_black" x="0" y="0"/>
+		<e:Label id="txt_index" text="0" textAlign="center" verticalAlign="middle" horizontalCenter="0.5" verticalCenter="-9"/>
+	</e:Group>
 </e:Skin>

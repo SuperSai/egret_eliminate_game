@@ -35,7 +35,7 @@
 			"url": "cn/asset/atlas/battle/battle.json",
 			"type": "sheet",
 			"name": "battle_json",
-			"subkeys": "battle_black,battle_blue,battle_green,battle_npc"
+			"subkeys": "battle_black,battle_blue,battle_green,battle_npc,battle_red"
 		}
 	]
 }
