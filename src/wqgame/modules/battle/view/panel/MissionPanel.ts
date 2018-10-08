@@ -5,11 +5,13 @@ class MissionPanel extends BaseEuiAlert {
 
 	public txt_title: eui.Label;
 	public btn_start: eui.Group;
+	public txt_condition: eui.Label;
 
 	private _mission: number;
 
 	public constructor($controller: BaseController, $layer: number) {
 		super($controller, $layer, SkinName.MissionPanelSkin);
+		let self = this;
 	}
 
 	public open(...param: any[]): void {

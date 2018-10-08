@@ -7,7 +7,7 @@ class BattleMissionView extends BaseEuiView {
 		super($controller, $layer);
 		let self = this;
 		self.skinName = SkinName.BattleMissionViewSkin;
-		// self.setResources(["battle"]);
+		self.setResources(["battleMission"]);
 	}
 
 	public initUI(): void {

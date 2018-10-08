@@ -33,6 +33,7 @@ var BattleController = (function (_super) {
     BattleController.prototype.initRegisterView = function () {
         var self = this;
         App.ViewManager.register(ViewConst.MissionPanel, new MissionPanel(self, LayerManager.GAME_UI_LAYER));
+        App.ViewManager.register(ViewConst.BattleMission, new BattleMissionView(self, LayerManager.GAME_UI_LAYER));
     };
     /** 显示关卡面板 */
     BattleController.prototype.onShowMissionPanel = function (mission) {
@@ -42,6 +43,7 @@ var BattleController = (function (_super) {
     /** 进入战斗关卡 */
     BattleController.prototype.onEnterBattleMission = function (mission) {
         var self = this;
+        App.ViewManager.open(ViewConst.BattleMission, mission);
     };
     return BattleController;
 }(BaseController));
