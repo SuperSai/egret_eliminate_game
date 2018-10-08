@@ -24,9 +24,8 @@ var BattleController = (function (_super) {
         self.registerFunc(BattleConst.BATTLE_ENTER_MISSION, self.onEnterBattleMission, self);
         return _this;
     }
-    BattleController.prototype.onBattleInit = function (param) {
+    BattleController.prototype.onBattleInit = function () {
         var self = this;
-        self._battleModel.levelVO = GlobleVOData.getData(GlobleVOData.LevelVO, param[0]);
         App.ViewManager.open(ViewConst.Battle);
         self.initRegisterView();
     };

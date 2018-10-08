@@ -17,6 +17,7 @@
 	"autoGenerateExmlsList": true,
 	"exmls": [
 		"resource/skins/battle/BattleMapSkin.exml",
+		"resource/skins/battle/BattleMissionViewSkin.exml",
 		"resource/skins/common/component/CurrencyComSkin.exml",
 		"resource/skins/battle/BattleViewSkin.exml",
 		"resource/skins/battle/item/MapBtnItemSkin.exml",

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BattleMissionViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui">
+	<e:Group width="100%" height="100%" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>

@@ -1,8 +1,5 @@
 class BattleModel extends BaseModel {
 
-	//关卡表模板数据
-	private _levelVO: LevelVO;
-
 	/** 总地图数量 */
 	public maxMapCount: number = 15;
 	/** 开放的地图数量 */
@@ -20,15 +17,6 @@ class BattleModel extends BaseModel {
 	/** 初始化 */
 	private init(): void {
 		let self = this;
+		self.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
 	}
-
-
-	set levelVO(value: LevelVO) {
-		this._levelVO = value;
-	}
-	/** 关卡表模板数据 */
-	get levelVO(): LevelVO {
-		return this._levelVO;
-	}
-
 }

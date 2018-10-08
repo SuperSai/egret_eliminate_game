@@ -22,9 +22,8 @@ class BattleController extends BaseController {
 		self.registerFunc(BattleConst.BATTLE_ENTER_MISSION, self.onEnterBattleMission, self);
 	}
 
-	private onBattleInit(param: any[]): void {
+	private onBattleInit(): void {
 		let self = this;
-		self._battleModel.levelVO = GlobleVOData.getData(GlobleVOData.LevelVO, param[0]);
 		App.ViewManager.open(ViewConst.Battle);
 		self.initRegisterView();
 	}
@@ -33,6 +32,7 @@ class BattleController extends BaseController {
 	private initRegisterView(): void {
 		let self = this;
 		App.ViewManager.register(ViewConst.MissionPanel, new MissionPanel(self, LayerManager.GAME_UI_LAYER));
+		App.ViewManager.register(ViewConst.BattleMission, new BattleMissionView(self, LayerManager.GAME_UI_LAYER));
 	}
 
 	/** 显示关卡面板 */
@@ -44,7 +44,7 @@ class BattleController extends BaseController {
 	/** 进入战斗关卡 */
 	private onEnterBattleMission(mission: number): void {
 		let self = this;
-
+		App.ViewManager.open(ViewConst.BattleMission, mission);
 	}
 
 }

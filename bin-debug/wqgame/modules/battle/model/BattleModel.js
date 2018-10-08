@@ -27,18 +27,8 @@ var BattleModel = (function (_super) {
     /** 初始化 */
     BattleModel.prototype.init = function () {
         var self = this;
+        self.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
     };
-    Object.defineProperty(BattleModel.prototype, "levelVO", {
-        /** 关卡表模板数据 */
-        get: function () {
-            return this._levelVO;
-        },
-        set: function (value) {
-            this._levelVO = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     return BattleModel;
 }(BaseModel));
 __reflect(BattleModel.prototype, "BattleModel");

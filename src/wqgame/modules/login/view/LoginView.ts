@@ -124,7 +124,7 @@ class LoginView extends BaseEuiView {
 			return;
 		}
 		App.SceneManager.clear();
-		App.SceneManager.runScene(SceneConsts.BATTLE, [10000]);
+		App.SceneManager.runScene(SceneConsts.BATTLE);
 		// this.applyFunc(LoginConst.LOGIN_SEND_SERVER, self.txt_input.text);
 	}
 

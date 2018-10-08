@@ -15,8 +15,7 @@ class BattleScene extends BaseScene {
 	public onEnter(...param: any[]): void {
 		super.onEnter();
 		//参数
-		var mapId: number = param[0];
-		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.BATTLE_INIT, mapId);
+		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.BATTLE_INIT);
 	}
 
     /**
