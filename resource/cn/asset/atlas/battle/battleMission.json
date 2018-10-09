@@ -1,3 +1,10 @@
 {"file":"battleMission.png","frames":{
+"battleMission_step":{"x":724,"y":0,"w":131,"h":157,"offX":0,"offY":0,"sourceW":131,"sourceH":157},
+"battleMission_stop":{"x":949,"y":96,"w":64,"h":65,"offX":0,"offY":0,"sourceW":64,"sourceH":65},
 "battleMission_bg":{"x":0,"y":0,"w":720,"h":1280,"offX":0,"offY":0,"sourceW":720,"sourceH":1280},
-"battleMission_star":{"x":722,"y":0,"w":43,"h":39,"offX":0,"offY":0,"sourceW":43,"sourceH":39}}}
+"battleMission_grid_bg":{"x":859,"y":98,"w":86,"h":86,"offX":0,"offY":0,"sourceW":86,"sourceH":86},
+"battleMission_inBG":{"x":859,"y":0,"w":83,"h":94,"offX":0,"offY":0,"sourceW":83,"sourceH":94},
+"battleMission_level":{"x":946,"y":0,"w":73,"h":92,"offX":0,"offY":0,"sourceW":73,"sourceH":92},
+"battleMission_score":{"x":811,"y":161,"w":28,"h":40,"offX":0,"offY":0,"sourceW":28,"sourceH":40},
+"battleMission_skill_bg":{"x":724,"y":161,"w":36,"h":110,"offX":0,"offY":0,"sourceW":36,"sourceH":110},
+"battleMission_star":{"x":764,"y":161,"w":43,"h":39,"offX":0,"offY":0,"sourceW":43,"sourceH":39}}}

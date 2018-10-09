@@ -17,8 +17,8 @@ var BattleMissionView = (function (_super) {
         var _this = _super.call(this, $controller, $layer) || this;
         var self = _this;
         self.skinName = SkinName.BattleMissionViewSkin;
+        self.setResources(["battleMission"]);
         return _this;
-        // self.setResources(["battle"]);
     }
     BattleMissionView.prototype.initUI = function () {
         _super.prototype.initUI.call(this);
@@ -34,13 +34,20 @@ var BattleMissionView = (function (_super) {
         }
         _super.prototype.open.call(this, param);
         var self = this;
+        self.txt_mission.text = param[0] + "";
     };
     BattleMissionView.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
         var self = this;
+        self.btn_pause.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onPauseHandler, self);
+        self.setBtnEffect(["btn_pause"]);
     };
     BattleMissionView.prototype.removeEvents = function () {
         _super.prototype.removeEvents.call(this);
+        var self = this;
+        self.btn_pause.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onPauseHandler, self);
+    };
+    BattleMissionView.prototype.onPauseHandler = function () {
         var self = this;
     };
     return BattleMissionView;

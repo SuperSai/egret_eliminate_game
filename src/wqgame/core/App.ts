@@ -140,6 +140,11 @@ class App {
 	public static get ResUtil(): ResUtil {
 		return ResUtil.Instance();
 	}
+	/** 格子管理类 */
+	public static get GridManager(): GridManager {
+		return GridManager.Instance();
+	}
+
 	private static _notificationCenter: MessageCenter;
 	/** 消息通知中心 */
 	public static get NotificationCenter(): MessageCenter {

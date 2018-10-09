@@ -51,7 +51,7 @@
 			"url": "cn/asset/atlas/battle/battleMission.json",
 			"type": "sheet",
 			"name": "battleMission_json",
-			"subkeys": "battleMission_bg,battleMission_star"
+			"subkeys": "battleMission_bg,battleMission_grid_bg,battleMission_inBG,battleMission_level,battleMission_score,battleMission_skill_bg,battleMission_star,battleMission_step,battleMission_stop"
 		}
 	]
 }

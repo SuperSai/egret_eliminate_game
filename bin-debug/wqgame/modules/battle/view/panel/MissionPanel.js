@@ -14,7 +14,9 @@ r.prototype = e.prototype, t.prototype = new r();
 var MissionPanel = (function (_super) {
     __extends(MissionPanel, _super);
     function MissionPanel($controller, $layer) {
-        return _super.call(this, $controller, $layer, SkinName.MissionPanelSkin) || this;
+        var _this = _super.call(this, $controller, $layer, SkinName.MissionPanelSkin) || this;
+        var self = _this;
+        return _this;
     }
     MissionPanel.prototype.open = function () {
         var param = [];

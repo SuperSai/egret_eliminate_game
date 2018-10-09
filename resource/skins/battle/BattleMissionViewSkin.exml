@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="BattleMissionViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui">
+<e:Skin class="BattleMissionViewSkin" width="720" height="1280" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect left="0" right="0" top="0" bottom="0"/>
 	<e:Group width="100%" height="100%" horizontalCenter="0" verticalCenter="0">
 		<e:Image source="battleMission_json.battleMission_bg" horizontalCenter="0" verticalCenter="0"/>
+		<e:Group horizontalCenter="0" bottom="0" locked="true">
+			<e:Image source="battleMission_json.battleMission_skill_bg" scale9Grid="24,22,8,8" anchorOffsetX="0" width="288" anchorOffsetY="0" height="124" x="0" y="0"/>
+			<e:Image source="battleMission_json.battleMission_skill_bg" scale9Grid="24,22,8,8" anchorOffsetX="0" width="288" anchorOffsetY="0" height="124" scaleX="-1" x="574" y="0"/>
+		</e:Group>
+		<e:Button id="btn_pause" label="" right="21" top="18" name="btn_pause_1#1" touchChildren="false">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="battleMission_json.battleMission_stop" source.down="battleMission_json.battleMission_stop" source.disabled="battleMission_json.battleMission_stop"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Image source="battleMission_json.battleMission_inBG" scale9Grid="20,20,47,54" anchorOffsetX="0" width="679.97" anchorOffsetY="0" height="703.09" horizontalCenter="0" verticalCenter="-85.5"/>
+		<e:Group bottom="304" horizontalCenter="0">
+			<e:Image source="battleMission_json.battleMission_score" x="0" y="0" scale9Grid="23,17,3,4" anchorOffsetX="0" width="122" height="60"/>
+			<e:Image source="battleMission_json.battleMission_score" x="243.15" y="0" scale9Grid="23,17,3,4" anchorOffsetX="0" width="122" scaleX="-1" height="60"/>
+			<e:Label id="txt_score" text="分数：0" fontFamily="Microsoft YaHei" bold="true" textAlign="center" textColor="0xffffff" stroke="2" strokeColor="0x7a3737" verticalAlign="middle" horizontalCenter="0" verticalCenter="0"/>
+		</e:Group>
+		<e:Group left="0" bottom="98">
+			<e:Image source="battleMission_json.battleMission_level" y="0" x="0"/>
+			<e:Label id="txt_mission" text="1" horizontalCenter="0" verticalCenter="11" fontFamily="Microsoft YaHei" size="24" textAlign="center" bold="true"/>
+		</e:Group>
+		<e:Group right="24" bottom="165">
+			<e:Image source="battleMission_json.battleMission_step" x="0" y="0"/>
+			<e:Label text="步数" horizontalCenter="0.5" top="24" fontFamily="Microsoft YaHei" bold="true" textAlign="center" textColor="0x257daa"/>
+			<e:Label id="txt_step" text="10" fontFamily="Microsoft YaHei" bold="true" textAlign="center" horizontalCenter="0" verticalCenter="0" textColor="0x2931bc"/>
+		</e:Group>
 	</e:Group>
 </e:Skin>
