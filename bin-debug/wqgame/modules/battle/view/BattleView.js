@@ -62,8 +62,13 @@ var BattleView = (function (_super) {
         var self = this;
         //已经滑动到顶部
         if (self.scroller.viewport.scrollV == 0) {
-            self.map.addMap();
-            self.scroller.viewport.validateNow();
+            var maxMission = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
+            if (self._model.mapItemDic.ContainsKey(maxMission)) {
+                if (self._model.mapItemDic.TryGetValue(maxMission).isListener) {
+                    self.map.addMap();
+                    self.scroller.viewport.validateNow();
+                }
+            }
         }
     };
     /** 更新地图Item数据 */

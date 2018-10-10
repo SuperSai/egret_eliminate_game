@@ -37,7 +37,7 @@ var MapBtnItem = (function (_super) {
     /** 初始化状态 */
     MapBtnItem.prototype.initState = function () {
         var self = this;
-        self._isListener = true;
+        self.isListener = true;
         if (parseInt(self.txt_index.text) == App.PlayerInfoManager.Info.data.topMission) {
             self.itemImg.source = "battle_red";
         }
@@ -45,7 +45,7 @@ var MapBtnItem = (function (_super) {
             self.itemImg.source = "battle_green";
         }
         else {
-            self._isListener = false;
+            self.isListener = false;
             self.itemImg.source = "battle_black";
         }
     };
@@ -62,7 +62,7 @@ var MapBtnItem = (function (_super) {
     /** 选择关卡 */
     MapBtnItem.prototype.onSelectLevel = function () {
         var self = this;
-        if (self._isListener) {
+        if (self.isListener) {
             App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.BATTLE_SELECT_LEVEL, parseInt(self.txt_index.text));
             return;
         }

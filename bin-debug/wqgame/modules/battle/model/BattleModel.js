@@ -51,6 +51,17 @@ var BattleModel = (function (_super) {
             self.enterMission = mission;
         }
     };
+    BattleModel.prototype.getMapIndex = function (mission) {
+        var self = this;
+        for (var i = 0; i < self.openMapCount; i++) {
+            var value = mission - i * 2 * 10;
+            var value2 = i * 2 * 10 + value;
+            if (value2 == mission) {
+                return i + 1;
+            }
+        }
+        return 0;
+    };
     BattleModel.prototype.reset = function () {
         this.enterMission = 0;
         this.currStep = 0;

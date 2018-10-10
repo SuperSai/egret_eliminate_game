@@ -52,6 +52,7 @@ var Grid = (function (_super) {
             if (self.isSelected != value) {
                 self.isSelected = value;
                 if (value) {
+                    self._icon.source = "battle_icon_s_" + self.id;
                     self.doSelectedTween();
                 }
                 else {
@@ -75,7 +76,6 @@ var Grid = (function (_super) {
                 .to({ scaleX: 1, scaleY: 1 }, 100, egret.Ease.backIn)
                 .call(function () {
                 self.isAction = false;
-                self._icon.source = "battle_icon_s_" + self.id;
             }, self);
         }
     };

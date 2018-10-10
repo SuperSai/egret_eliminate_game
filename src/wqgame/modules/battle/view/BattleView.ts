@@ -45,22 +45,27 @@ class BattleView extends BaseEuiView {
 	public addEvents(): void {
 		super.addEvents();
 		let self = this;
-		self.scroller.addEventListener(egret.Event.CHANGE, self.onMapChange, self);
+		// self.scroller.addEventListener(egret.Event.CHANGE, self.onMapChange, self);
 		self.registerFunc(BattleConst.MAP_ITEM_UPDATE, self.onUpdateMapItem, self);
 	}
 
 	public removeEvents(): void {
 		super.removeEvents();
 		let self = this;
-		self.scroller.removeEventListener(egret.Event.CHANGE, self.onMapChange, self);
+		// self.scroller.removeEventListener(egret.Event.CHANGE, self.onMapChange, self);
 	}
 
 	private onMapChange(): void {
 		let self = this;
 		//已经滑动到顶部
 		if (self.scroller.viewport.scrollV == 0) {
-			self.map.addMap();
-			self.scroller.viewport.validateNow();
+			let maxMission: number = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
+			if (self._model.mapItemDic.ContainsKey(maxMission)) {
+				if ((<MapBtnItem>self._model.mapItemDic.TryGetValue(maxMission)).isListener) {
+					self.map.addMap();
+					self.scroller.viewport.validateNow();
+				}
+			}
 		}
 	}
 
@@ -69,5 +74,21 @@ class BattleView extends BaseEuiView {
 		let self = this;
 		(<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission)).initState();
 		(<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1)).initState();
+		if (self.checkIsEnterNextMap()) {
+			self.map.addMap();
+			self.scroller.viewport.validateNow();
+		}
+	}
+
+	/** 检查是否进入下一张地图 */
+	private checkIsEnterNextMap(): boolean {
+		let self = this;
+		let maxMission: number = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
+		if (self._model.mapItemDic.ContainsKey(maxMission)) {
+			if ((<MapBtnItem>self._model.mapItemDic.TryGetValue(maxMission)).isListener) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

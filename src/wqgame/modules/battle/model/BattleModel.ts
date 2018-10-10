@@ -45,6 +45,18 @@ class BattleModel extends BaseModel {
 		}
 	}
 
+	public getMapIndex(mission: number): number {
+		let self = this;
+		for (let i: number = 0; i < self.openMapCount; i++) {
+			let value: number = mission - i * 2 * 10;
+			let value2: number = i * 2 * 10 + value;
+			if (value2 == mission) {
+				return i + 1;
+			}
+		}
+		return 0;
+	}
+
 	public reset() {
 		this.enterMission = 0;
 		this.currStep = 0;
