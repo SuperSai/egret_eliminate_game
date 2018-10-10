@@ -35,6 +35,7 @@ var BattleMap = (function (_super) {
     /** 初始化 */
     BattleMap.prototype.init = function () {
         var self = this;
+        App.PlayerInfoManager.Info.initData();
     };
     /** 初始化地图 */
     BattleMap.prototype.initMap = function () {
@@ -54,6 +55,7 @@ var BattleMap = (function (_super) {
             var levelItem = ObjectPool.pop(MapBtnItem, "MapBtnItem");
             levelItem.anchorOffsetX = levelItem.anchorOffsetY = 45;
             levelItem.onAwake([index - 1, i + 1, pos[0], pos[1], self._model]);
+            self._model.mapItemDic.Add(parseInt(levelItem.txt_index.text), levelItem);
             mapCon.addChild(levelItem);
         }
     };
@@ -82,7 +84,7 @@ var BattleMap = (function (_super) {
     BattleMap.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
         var self = this;
-        // App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
+        App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
     };
     BattleMap.prototype.removeEvents = function () {
         _super.prototype.removeEvents.call(this);

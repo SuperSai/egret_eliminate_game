@@ -163,6 +163,45 @@ var MathUtils = (function (_super) {
             return angle + 360;
         return angle;
     };
+    // 角度的取值范围 [0, 360]
+    MathUtils.prototype.getLineAngle = function (beganPoint, endPoint) {
+        var x = endPoint.x - beganPoint.x;
+        var y = Math.abs(endPoint.y - beganPoint.y);
+        var z = egret.Point.distance(beganPoint, endPoint);
+        var a = Math.round(Math.asin(y / z) / Math.PI * 180); // 最终的角度
+        // 这个角度取值区间[0,90] 米型结构
+        if (beganPoint.x > endPoint.x) {
+            if (beganPoint.y > endPoint.y) {
+                a = a + 180;
+            }
+            else if (beganPoint.y < endPoint.y) {
+                a = 180 - a;
+            }
+            else if (beganPoint.y == endPoint.y) {
+                a = 180;
+            }
+        }
+        else if (beganPoint.x < endPoint.x) {
+            if (beganPoint.y > endPoint.y) {
+                a = 360 - a;
+            }
+            else if (beganPoint.y < endPoint.y) {
+                a = a;
+            }
+            else if (beganPoint.y == endPoint.y) {
+                a = 0;
+            }
+        }
+        else if (beganPoint.x == endPoint.x) {
+            if (beganPoint.y > endPoint.y) {
+                a = 270;
+            }
+            else if (beganPoint.y < endPoint.y) {
+                a = 90;
+            }
+        }
+        return a;
+    };
     return MathUtils;
 }(BaseClass));
 __reflect(MathUtils.prototype, "MathUtils");

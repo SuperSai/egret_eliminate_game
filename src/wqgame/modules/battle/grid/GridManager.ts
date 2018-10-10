@@ -36,7 +36,7 @@ class GridManager extends BaseClass {
 	}
 
 	public genInitGridId(row: number, column: number) {
-		let json = RES.getRes("gameCellCfg_json");
+		let json = RES.getRes("gameGrids");
 		let arr = json["1"];
 		let id = arr[row][column];
 		return id;

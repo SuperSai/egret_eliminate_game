@@ -10,3 +10,6 @@ out:退出
 
 battle.txt.01:第{0}关
 battle.txt.02:请先通过前面关卡
+battle.txt.03:目标分数：{0}
+battle.txt.04:分数：{0}
+battle.txt.05:消除分数达到{0}分

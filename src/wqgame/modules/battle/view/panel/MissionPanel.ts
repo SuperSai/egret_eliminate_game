@@ -8,18 +8,21 @@ class MissionPanel extends BaseEuiAlert {
 	public txt_condition: eui.Label;
 
 	private _mission: number;
+	private _model: BattleModel;
 
 	public constructor($controller: BaseController, $layer: number) {
 		super($controller, $layer, SkinName.MissionPanelSkin);
 		let self = this;
+		self._model = <BattleModel>self.controller.getModel();
 	}
 
-	public open(...param: any[]): void {
+
+	public initData(): void {
+		super.initData();
 		let self = this;
-		self._mission = param[0];
-		self.txt_title.text = App.LanguageManager.getLanguageText("battle.txt.01", self._mission);
+		self.txt_title.text = App.LanguageManager.getLanguageText("battle.txt.01", self._model.enterMission);
+		self.txt_condition.text = App.LanguageManager.getLanguageText("battle.txt.05", self._model.targetScore);
 	}
-
 
 	public addEvents(): void {
 		super.addEvents();
@@ -37,6 +40,6 @@ class MissionPanel extends BaseEuiAlert {
 	/** 进入战斗关卡 */
 	private onEnterBattleMission(): void {
 		let self = this;
-		self.applyFunc(BattleConst.BATTLE_ENTER_MISSION, self._mission);
+		self.applyFunc(BattleConst.BATTLE_ENTER_MISSION);
 	}
 }

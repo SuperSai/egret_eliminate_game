@@ -19,4 +19,8 @@ class SkinName {
 
 	public static BattleMissionViewSkin: string = "resource/skins/battle/BattleMissionViewSkin.exml";
 
+	public static BattleWinSkin: string = "resource/skins/battle/BattleWinSkin.exml";
+
+	public static BattleLoseSkin: string = "resource/skins/battle/BattleLoseSkin.exml";
+
 }

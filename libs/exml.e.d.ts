@@ -1,8 +1,12 @@
+declare class BattleLoseSkin extends eui.Skin{
+}
 declare class BattleMapSkin extends eui.Skin{
 }
 declare class BattleMissionViewSkin extends eui.Skin{
 }
 declare class BattleViewSkin extends eui.Skin{
+}
+declare class BattleWinSkin extends eui.Skin{
 }
 declare class MapBtnItemSkin extends eui.Skin{
 }

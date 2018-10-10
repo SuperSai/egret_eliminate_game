@@ -27,6 +27,7 @@ class BattleMap extends BaseEuiView {
 	/** 初始化 */
 	private init(): void {
 		let self = this;
+		App.PlayerInfoManager.Info.initData();
 	}
 	/** 初始化地图 */
 	private initMap(): void {
@@ -47,6 +48,7 @@ class BattleMap extends BaseEuiView {
 			let levelItem: MapBtnItem = ObjectPool.pop(MapBtnItem, "MapBtnItem");
 			levelItem.anchorOffsetX = levelItem.anchorOffsetY = 45;
 			levelItem.onAwake([index - 1, i + 1, pos[0], pos[1], self._model]);
+			self._model.mapItemDic.Add(parseInt(levelItem.txt_index.text), levelItem);
 			mapCon.addChild(levelItem);
 		}
 	}
@@ -78,7 +80,7 @@ class BattleMap extends BaseEuiView {
 	public addEvents(): void {
 		super.addEvents();
 		let self = this;
-		// App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
+		App.StageUtils.getStage().addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGetMapPos, self);
 	}
 
 	public removeEvents(): void {

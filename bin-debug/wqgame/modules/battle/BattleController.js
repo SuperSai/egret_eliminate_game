@@ -34,16 +34,20 @@ var BattleController = (function (_super) {
         var self = this;
         App.ViewManager.register(ViewConst.MissionPanel, new MissionPanel(self, LayerManager.GAME_UI_LAYER));
         App.ViewManager.register(ViewConst.BattleMission, new BattleMissionView(self, LayerManager.GAME_UI_LAYER));
+        App.ViewManager.register(ViewConst.BattleWin, new BattleWinView(self, LayerManager.GAME_UI_LAYER));
+        App.ViewManager.register(ViewConst.BattleLose, new BattleLoseView(self, LayerManager.GAME_UI_LAYER));
     };
     /** 显示关卡面板 */
     BattleController.prototype.onShowMissionPanel = function (mission) {
         var self = this;
+        self._battleModel.initMissionData(mission);
         App.ViewManager.open(ViewConst.MissionPanel, mission);
     };
     /** 进入战斗关卡 */
-    BattleController.prototype.onEnterBattleMission = function (mission) {
+    BattleController.prototype.onEnterBattleMission = function () {
         var self = this;
-        App.ViewManager.open(ViewConst.BattleMission, mission);
+        App.ViewManager.close(ViewConst.MissionPanel);
+        App.ViewManager.open(ViewConst.BattleMission);
     };
     return BattleController;
 }(BaseController));

@@ -39,6 +39,7 @@ var GlobleVOData = (function (_super) {
         self._totalStepCsvList.Add(GlobleVOData.SoundVO, SoundVO);
         self._totalStepCsvList.Add(GlobleVOData.ServerConfigVO, ServerConfigVO);
         self._totalStepCsvList.Add(GlobleVOData.MapVO, MapVO);
+        self._totalStepCsvList.Add(GlobleVOData.LevelVO, LevelVO);
     };
     // 解析初始数据表
     GlobleVOData.prototype.initStep = function () {
@@ -120,6 +121,7 @@ var GlobleVOData = (function (_super) {
     GlobleVOData.BoneAnimationVO = "BoneAnimation_json";
     GlobleVOData.SoundVO = "Sound_json";
     GlobleVOData.MapVO = "Map_json";
+    GlobleVOData.LevelVO = "Level_json";
     return GlobleVOData;
 }(egret.DisplayObject));
 __reflect(GlobleVOData.prototype, "GlobleVOData");

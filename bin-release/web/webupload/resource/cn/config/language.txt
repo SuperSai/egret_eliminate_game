@@ -1,0 +1,12 @@
+#
+ok:确定
+cancel:取消
+tip:提示
+Refresh:刷新
+exp:经验
+close:关闭
+lock:停用
+out:退出
+
+battle.txt.01:第{0}关
+battle.txt.02:请先通过前面关卡

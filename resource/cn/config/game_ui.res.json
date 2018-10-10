@@ -13,8 +13,12 @@
 			"name": "hall"
 		},
 		{
-			"keys": "battleIcon_json,battleMission_json",
+			"keys": "battleIcon_json,battleMission_json,gameGrids",
 			"name": "battleMission"
+		},
+		{
+			"keys": "gameOver_json",
+			"name": "gameOver"
 		}
 	],
 	"resources": [
@@ -51,7 +55,18 @@
 			"url": "cn/asset/atlas/battle/battleMission.json",
 			"type": "sheet",
 			"name": "battleMission_json",
-			"subkeys": "battleMission_bg,battleMission_grid_bg,battleMission_inBG,battleMission_level,battleMission_score,battleMission_skill_bg,battleMission_star,battleMission_step,battleMission_stop"
+			"subkeys": "battleMission_bg,battleMission_grid_bg,battleMission_inBG,battleMission_level,battleMission_line,battleMission_score,battleMission_skill_bg,battleMission_star,battleMission_step,battleMission_stop"
+		},
+		{
+			"url": "config/gameGrids.json",
+			"type": "json",
+			"name": "gameGrids"
+		},
+		{
+			"url": "cn/asset/atlas/battle/gameOver.json",
+			"type": "sheet",
+			"name": "gameOver_json",
+			"subkeys": "gameOver_bg,gameOver_bg_02,gameOver_lose,gameOver_title_bg,gameOver_win"
 		}
 	]
 }

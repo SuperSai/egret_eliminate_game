@@ -82,7 +82,9 @@ class ViewManager extends BaseClass {
 		}
 
 		if (view.isShow()) {
+			view.initUI();
 			view.open.apply(view, param);
+			view.initData();
 			return view;
 		}
 

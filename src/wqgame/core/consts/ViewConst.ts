@@ -7,5 +7,7 @@ enum ViewConst {
 	Battle = 20000,//战斗界面
 	MissionPanel,
 	BattleMission,
+	BattleWin,
+	BattleLose,
 	/***************** 战斗相关 end *****************/
 }

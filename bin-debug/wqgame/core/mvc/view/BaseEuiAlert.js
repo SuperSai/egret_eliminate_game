@@ -59,6 +59,16 @@ var BaseEuiAlert = (function (_super) {
         self._maskRect = null;
         App.ViewManager.closeView(self);
     };
+    BaseEuiAlert.prototype.close = function () {
+        var param = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            param[_i] = arguments[_i];
+        }
+        _super.prototype.close.call(this, param);
+        var self = this;
+        App.DisplayUtils.removeFromParent(self._maskRect);
+        self._maskRect = null;
+    };
     /** 创建遮罩 */
     BaseEuiAlert.prototype.getMask = function (maskAlpha) {
         var rect = new eui.Rect();

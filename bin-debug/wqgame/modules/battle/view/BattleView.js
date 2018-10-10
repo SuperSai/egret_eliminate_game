@@ -51,6 +51,7 @@ var BattleView = (function (_super) {
         _super.prototype.addEvents.call(this);
         var self = this;
         self.scroller.addEventListener(egret.Event.CHANGE, self.onMapChange, self);
+        self.registerFunc(BattleConst.MAP_ITEM_UPDATE, self.onUpdateMapItem, self);
     };
     BattleView.prototype.removeEvents = function () {
         _super.prototype.removeEvents.call(this);
@@ -64,6 +65,12 @@ var BattleView = (function (_super) {
             self.map.addMap();
             self.scroller.viewport.validateNow();
         }
+    };
+    /** 更新地图Item数据 */
+    BattleView.prototype.onUpdateMapItem = function () {
+        var self = this;
+        self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission).initState();
+        self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1).initState();
     };
     return BattleView;
 }(BaseEuiView));

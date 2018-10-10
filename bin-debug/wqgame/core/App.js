@@ -272,6 +272,14 @@ var App = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(App, "GridManager", {
+        /** 格子管理类 */
+        get: function () {
+            return GridManager.Instance();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(App, "NotificationCenter", {
         /** 消息通知中心 */
         get: function () {

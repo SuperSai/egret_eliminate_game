@@ -38,13 +38,10 @@ var MapBtnItem = (function (_super) {
     MapBtnItem.prototype.initState = function () {
         var self = this;
         self._isListener = true;
-        if (parseInt(self.txt_index.text) == self._model.currMission) {
-            self.itemImg.source = "battle_blue";
-        }
-        else if (parseInt(self.txt_index.text) == (self._model.passMission + 1)) {
+        if (parseInt(self.txt_index.text) == App.PlayerInfoManager.Info.data.topMission) {
             self.itemImg.source = "battle_red";
         }
-        else if (parseInt(self.txt_index.text) <= self._model.passMission) {
+        else if (parseInt(self.txt_index.text) < App.PlayerInfoManager.Info.data.topMission) {
             self.itemImg.source = "battle_green";
         }
         else {

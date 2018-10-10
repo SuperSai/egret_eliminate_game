@@ -83,7 +83,9 @@ var ViewManager = (function (_super) {
             return;
         }
         if (view.isShow()) {
+            view.initUI();
             view.open.apply(view, param);
+            view.initData();
             return view;
         }
         if (view.isInit()) {

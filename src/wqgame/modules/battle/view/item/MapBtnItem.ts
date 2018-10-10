@@ -38,14 +38,12 @@ class MapBtnItem extends BaseEuiItem {
 	}
 
 	/** 初始化状态 */
-	private initState(): void {
+	public initState(): void {
 		let self = this;
 		self._isListener = true;
-		if (parseInt(self.txt_index.text) == self._model.currMission) {	//当前选中关卡
-			self.itemImg.source = "battle_blue";
-		} else if (parseInt(self.txt_index.text) == (self._model.passMission + 1)) { //需要通关的关卡
+		if (parseInt(self.txt_index.text) == App.PlayerInfoManager.Info.data.topMission) {	//当前最高可以打的关卡
 			self.itemImg.source = "battle_red";
-		} else if (parseInt(self.txt_index.text) <= self._model.passMission) {	//所以已经通关的关卡
+		} else if (parseInt(self.txt_index.text) < App.PlayerInfoManager.Info.data.topMission) {	//所以已经通关的关卡
 			self.itemImg.source = "battle_green";
 		} else {	//没有通关的关卡
 			self._isListener = false;

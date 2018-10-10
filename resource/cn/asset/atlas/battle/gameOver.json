@@ -1,0 +1,6 @@
+{"file":"gameOver.png","frames":{
+"gameOver_lose":{"x":0,"y":363,"w":307,"h":111,"offX":9,"offY":0,"sourceW":316,"sourceH":111},
+"gameOver_title_bg":{"x":419,"y":0,"w":431,"h":175,"offX":6,"offY":0,"sourceW":443,"sourceH":175},
+"gameOver_win":{"x":419,"y":267,"w":327,"h":114,"offX":0,"offY":0,"sourceW":327,"sourceH":114},
+"gameOver_bg":{"x":0,"y":0,"w":415,"h":359,"offX":0,"offY":0,"sourceW":415,"sourceH":359},
+"gameOver_bg_02":{"x":419,"y":179,"w":465,"h":84,"offX":0,"offY":0,"sourceW":465,"sourceH":84}}}

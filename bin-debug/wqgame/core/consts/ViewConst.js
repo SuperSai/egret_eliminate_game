@@ -7,6 +7,8 @@ var ViewConst;
     ViewConst[ViewConst["Battle"] = 20000] = "Battle";
     ViewConst[ViewConst["MissionPanel"] = 20001] = "MissionPanel";
     ViewConst[ViewConst["BattleMission"] = 20002] = "BattleMission";
+    ViewConst[ViewConst["BattleWin"] = 20003] = "BattleWin";
+    ViewConst[ViewConst["BattleLose"] = 20004] = "BattleLose";
     /***************** 战斗相关 end *****************/
 })(ViewConst || (ViewConst = {}));
 //# sourceMappingURL=ViewConst.js.map

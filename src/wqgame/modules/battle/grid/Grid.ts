@@ -1,7 +1,7 @@
 class Grid extends egret.Sprite {
 
-	public static Width = 79;
-	public static Height = 79;
+	public static Width = 86;
+	public static Height = 86;
 
 	public id: number = 0;
 	public row = 0;
@@ -18,6 +18,7 @@ class Grid extends egret.Sprite {
 		let self = this;
 		self.id = $id;
 		self._icon = new eui.Image();
+		self.addChild(self._icon);
 		self.addEventListener(egret.Event.ADDED_TO_STAGE, self.onAddToStage, self);
 	}
 
@@ -30,13 +31,16 @@ class Grid extends egret.Sprite {
 		let self = this;
 		let texture = RES.getRes("battle_icon_" + self.id);
 		if (texture) {
+			this.width = Grid.Width;
+			this.height = Grid.Height;
+			this.anchorOffsetX = this.width / 2;
+			this.anchorOffsetY = this.height / 2;
+
 			self._icon.source = texture;
-			self._icon.width = self.width = Grid.Width;
-			self._icon.height = self.height = Grid.Height;
-			self._icon.anchorOffsetX = self.anchorOffsetX = self._icon.width << 1;
-			self._icon.anchorOffsetY = self.anchorOffsetY = self._icon.height << 1;
-			self._icon.x = self.width << 1;
-			self._icon.y = self.height << 1;
+			self._icon.anchorOffsetX = self._icon.width / 2;
+			self._icon.anchorOffsetY = self._icon.height / 2;
+			self._icon.x = self.width / 2;
+			self._icon.y = self.height / 2;
 		}
 	}
 
@@ -45,9 +49,10 @@ class Grid extends egret.Sprite {
 		if (self.isSelected != value) {
 			self.isSelected = value;
 			if (value) {	// 选中状态
+				self._icon.source = "battle_icon_s_" + self.id;
 				self.doSelectedTween();
 			} else {	// 非选中状态
-
+				self._icon.source = "battle_icon_" + self.id;
 			}
 		}
 	}
@@ -72,8 +77,8 @@ class Grid extends egret.Sprite {
 	/** 重置 */
 	public reset(): void {
 		let self = this;
-		// Util.removeByElements(CellMgr.cleanList, this);
-		// CellMgr.cleanCell(this);
+		ObjectUtils.removeFromArray(self, App.GridManager.clearList);
+		App.GridManager.clearGrid(self);
 		let tw = egret.Tween.get(self);
 		tw.to({ scaleX: 0.4, scaleY: 0.4 }, 200)
 			.call(() => {
@@ -91,8 +96,7 @@ class Grid extends egret.Sprite {
 
 	/** 重置完毕 */
 	private resetComplete(): void {
-		// var event:GameEvent = new GameEvent(GameEvent.CleanOver);
-		// this.dispatchEvent(event);
+		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.GRID_RESET_COMPLETE);
 	}
 
 	public drop(row: number, column: number) {
@@ -112,8 +116,7 @@ class Grid extends egret.Sprite {
 	}
 
 	private dropComplete() {
-		// var event: GameEvent = new GameEvent(GameEvent.DropOver);
-		// this.dispatchEvent(event);
+		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.GRID_DROP_COMPLETE);
 	}
 
 }

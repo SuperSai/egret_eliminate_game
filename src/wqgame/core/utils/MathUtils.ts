@@ -163,4 +163,37 @@ class MathUtils extends BaseClass {
 		if (angle < 0) return angle + 360;
 		return angle;
 	}
+
+	// 角度的取值范围 [0, 360]
+	public getLineAngle(beganPoint: egret.Point, endPoint: egret.Point) {
+		var x = endPoint.x - beganPoint.x;
+		var y = Math.abs(endPoint.y - beganPoint.y);
+		var z = egret.Point.distance(beganPoint, endPoint);
+		var a = Math.round(Math.asin(y / z) / Math.PI * 180);// 最终的角度
+		// 这个角度取值区间[0,90] 米型结构
+		if (beganPoint.x > endPoint.x) {// 2,3 象限
+			if (beganPoint.y > endPoint.y) {// 2
+				a = a + 180;
+			} else if (beganPoint.y < endPoint.y) {// 3
+				a = 180 - a;
+			} else if (beganPoint.y == endPoint.y) {
+				a = 180;
+			}
+		} else if (beganPoint.x < endPoint.x) {// 1,4 象限
+			if (beganPoint.y > endPoint.y) {//1
+				a = 360 - a;
+			} else if (beganPoint.y < endPoint.y) {//4
+				a = a;
+			} else if (beganPoint.y == endPoint.y) {
+				a = 0;
+			}
+		} else if (beganPoint.x == endPoint.x) {
+			if (beganPoint.y > endPoint.y) {//上滑
+				a = 270;
+			} else if (beganPoint.y < endPoint.y) {// 下滑
+				a = 90;
+			}
+		}
+		return a;
+	}
 }

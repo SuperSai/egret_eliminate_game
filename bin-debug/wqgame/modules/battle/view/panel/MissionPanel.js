@@ -16,16 +16,14 @@ var MissionPanel = (function (_super) {
     function MissionPanel($controller, $layer) {
         var _this = _super.call(this, $controller, $layer, SkinName.MissionPanelSkin) || this;
         var self = _this;
+        self._model = self.controller.getModel();
         return _this;
     }
-    MissionPanel.prototype.open = function () {
-        var param = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            param[_i] = arguments[_i];
-        }
+    MissionPanel.prototype.initData = function () {
+        _super.prototype.initData.call(this);
         var self = this;
-        self._mission = param[0];
-        self.txt_title.text = App.LanguageManager.getLanguageText("battle.txt.01", self._mission);
+        self.txt_title.text = App.LanguageManager.getLanguageText("battle.txt.01", self._model.enterMission);
+        self.txt_condition.text = App.LanguageManager.getLanguageText("battle.txt.05", self._model.targetScore);
     };
     MissionPanel.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
@@ -41,7 +39,7 @@ var MissionPanel = (function (_super) {
     /** 进入战斗关卡 */
     MissionPanel.prototype.onEnterBattleMission = function () {
         var self = this;
-        self.applyFunc(BattleConst.BATTLE_ENTER_MISSION, self._mission);
+        self.applyFunc(BattleConst.BATTLE_ENTER_MISSION);
     };
     return MissionPanel;
 }(BaseEuiAlert));

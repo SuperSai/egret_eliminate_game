@@ -61,6 +61,13 @@ class BaseEuiAlert extends BaseEuiView {
 		App.ViewManager.closeView(self);
 	}
 
+	public close(...param: any[]): void {
+		super.close(param);
+		let self = this;
+		App.DisplayUtils.removeFromParent(self._maskRect);
+		self._maskRect = null;
+	}
+
 	/** 创建遮罩 */
 	protected getMask(maskAlpha) {
 		let rect = new eui.Rect();

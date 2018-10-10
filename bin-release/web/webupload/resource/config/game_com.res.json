@@ -1,0 +1,46 @@
+{
+	"groups": [
+		{
+			"keys": "buttons_json,frames_json",
+			"name": "common"
+		},
+		{
+			"keys": "global",
+			"name": "global"
+		},
+		{
+			"keys": "loadingBg_jpg,loading_json",
+			"name": "loading"
+		}
+	],
+	"resources": [
+		{
+			"url": "config/global.json",
+			"type": "json",
+			"name": "global"
+		},
+		{
+			"url": "common/atlas/button/buttons.json",
+			"type": "sheet",
+			"name": "buttons_json",
+			"subkeys": "btn_add,btn_blue,btn_close,btn_red,btn_violet"
+		},
+		{
+			"url": "common/atlas/frame/frames.json",
+			"type": "sheet",
+			"name": "frames_json",
+			"subkeys": "frame_01,frame_04,frame_bg_01,frame_bg_02,frame_bg_03,frame_currency,frame_head,frame_head_light"
+		},
+		{
+			"url": "common/atlas/loadingBg.jpg",
+			"type": "image",
+			"name": "loadingBg_jpg"
+		},
+		{
+			"url": "cn/asset/atlas/loading/loading.json",
+			"type": "sheet",
+			"name": "loading_json",
+			"subkeys": "loading_bar_bg,loading_bar_pre"
+		}
+	]
+}

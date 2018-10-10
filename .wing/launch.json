@@ -11,7 +11,7 @@
 			"sourceMaps": true,
 			"webRoot": "${workspaceRoot}",
 			"preLaunchTask":"build",
-			"port":5129
+			"port":5074
 		},
 		{
 			"name": "使用本机 Chrome 调试",
@@ -24,7 +24,7 @@
 			"webRoot": "${workspaceRoot}",
 			"preLaunchTask":"build",
 			"userDataDir":"${tmpdir}",
-			"port":5129
+			"port":5074
 		}
 	]
 }

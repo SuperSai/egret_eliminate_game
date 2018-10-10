@@ -10,6 +10,12 @@ var BattleConst = (function () {
     BattleConst.BATTLE_SELECT_LEVEL = 11001;
     /** 进入战斗关卡 */
     BattleConst.BATTLE_ENTER_MISSION = 11002;
+    /** 格子数据重置完毕 */
+    BattleConst.GRID_RESET_COMPLETE = 11003;
+    /** 格子掉落完毕 */
+    BattleConst.GRID_DROP_COMPLETE = 11004;
+    /** 地图Item更新 */
+    BattleConst.MAP_ITEM_UPDATE = 11005;
     return BattleConst;
 }());
 __reflect(BattleConst.prototype, "BattleConst");

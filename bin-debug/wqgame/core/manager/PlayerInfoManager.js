@@ -17,7 +17,20 @@ var PlayerInfoManager = (function (_super) {
         return _super.call(this) || this;
     }
     PlayerInfoManager.prototype.setup = function () {
+        var self = this;
+        self._info = new PlayerInfo();
     };
+    Object.defineProperty(PlayerInfoManager.prototype, "Info", {
+        /** 人物信息 */
+        get: function () {
+            return this._info;
+        },
+        set: function (value) {
+            this._info = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return PlayerInfoManager;
 }(BaseClass));
 __reflect(PlayerInfoManager.prototype, "PlayerInfoManager");

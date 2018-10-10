@@ -24,6 +24,7 @@ class GlobleVOData extends egret.DisplayObject {
 	public static BoneAnimationVO: string = "BoneAnimation_json";
 	public static SoundVO: string = "Sound_json";
 	public static MapVO: string = "Map_json";
+	public static LevelVO: string = "Level_json";
 
 	private initModel(): void {
 		let self = this;
@@ -31,6 +32,7 @@ class GlobleVOData extends egret.DisplayObject {
 		self._totalStepCsvList.Add(GlobleVOData.SoundVO, SoundVO);
 		self._totalStepCsvList.Add(GlobleVOData.ServerConfigVO, ServerConfigVO);
 		self._totalStepCsvList.Add(GlobleVOData.MapVO, MapVO);
+		self._totalStepCsvList.Add(GlobleVOData.LevelVO, LevelVO);
 	}
 
 	// 解析初始数据表

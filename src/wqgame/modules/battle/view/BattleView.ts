@@ -46,6 +46,7 @@ class BattleView extends BaseEuiView {
 		super.addEvents();
 		let self = this;
 		self.scroller.addEventListener(egret.Event.CHANGE, self.onMapChange, self);
+		self.registerFunc(BattleConst.MAP_ITEM_UPDATE, self.onUpdateMapItem, self);
 	}
 
 	public removeEvents(): void {
@@ -61,5 +62,12 @@ class BattleView extends BaseEuiView {
 			self.map.addMap();
 			self.scroller.viewport.validateNow();
 		}
+	}
+
+	/** 更新地图Item数据 */
+	private onUpdateMapItem(): void {
+		let self = this;
+		(<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission)).initState();
+		(<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1)).initState();
 	}
 }
