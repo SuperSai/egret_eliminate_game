@@ -103,6 +103,7 @@ var Grid = (function (_super) {
     Grid.prototype.resetComplete = function () {
         App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.GRID_RESET_COMPLETE);
     };
+    /** 掉落 */
     Grid.prototype.drop = function (row, column) {
         var self = this;
         var gx = App.GridManager.getGridPosX(column);

@@ -3,14 +3,20 @@
  */
 class HallView extends BaseEuiView {
 
+	public btn_map: eui.Group;
+	public petGroup: eui.Group;
+	public petPos: eui.Group;
+	public headImg: eui.Image;
 	public currency: CurrencyCom;
-	/** 关卡按钮 */
-	public btn_checkpoint: eui.Button;
+
+	private _model: HallModel;
 
 	public constructor($controller: BaseController, $layer: number) {
 		super($controller, $layer);
-		this.skinName = SkinName.HallViewSkin;
-		this.setResources(["hall"]);
+		let self = this;
+		self.skinName = SkinName.HallViewSkin;
+		self.setResources(["hall"]);
+		self._model = <HallModel>self.controller.getModel();
 	}
 
 	/** 对面板进行显示初始化，用于子类继承 */
@@ -29,24 +35,25 @@ class HallView extends BaseEuiView {
 	public open(...param: any[]): void {
 		super.open(param);
 		let self = this;
-		let model: HallModel = param[0];
 	}
 
 	public addEvents(): void {
 		super.addEvents();
 		let self = this;
-		self.btn_checkpoint.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoCheckpoint, self);
-		self.setBtnEffect(["btn_checkpoint"]);
+		self.btn_map.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onEnterMapView, self);
+		self.setBtnEffect(["btn_map"]);
 	}
 
 	public removeEvents(): void {
 		super.removeEvents();
 		let self = this;
-		self.btn_checkpoint.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoCheckpoint, self);
+		self.btn_map.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onEnterMapView, self);
 	}
 
-	/** 进入关卡选择界面 */
-	private onGotoCheckpoint(): void {
+	/** 进入关卡选择地图 */
+	private onEnterMapView(): void {
 		let self = this;
+		App.SceneManager.clear();
+		App.SceneManager.runScene(SceneConsts.BATTLE);
 	}
 }

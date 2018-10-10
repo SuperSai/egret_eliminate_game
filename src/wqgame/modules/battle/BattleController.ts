@@ -33,8 +33,9 @@ class BattleController extends BaseController {
 		let self = this;
 		App.ViewManager.register(ViewConst.MissionPanel, new MissionPanel(self, LayerManager.GAME_UI_LAYER));
 		App.ViewManager.register(ViewConst.BattleMission, new BattleMissionView(self, LayerManager.GAME_UI_LAYER));
-		App.ViewManager.register(ViewConst.BattleWin, new BattleWinView(self, LayerManager.GAME_UI_LAYER));
-		App.ViewManager.register(ViewConst.BattleLose, new BattleLoseView(self, LayerManager.GAME_UI_LAYER));
+		App.ViewManager.register(ViewConst.BattleWinPanel, new BattleWinView(self, LayerManager.GAME_UI_LAYER));
+		App.ViewManager.register(ViewConst.BattleLosePanel, new BattleLoseView(self, LayerManager.GAME_UI_LAYER));
+		App.ViewManager.register(ViewConst.BattlePausePanel, new BattlePausePanel(self, LayerManager.GAME_UI_LAYER));
 	}
 
 	/** 显示关卡面板 */

@@ -47,14 +47,14 @@ var BattleWinView = (function (_super) {
     /** 进入下一关卡 */
     BattleWinView.prototype.onNextMission = function () {
         var self = this;
-        App.ViewManager.close(ViewConst.BattleWin);
+        App.ViewManager.close(ViewConst.BattleWinPanel);
         self._model.initMissionData(self._model.enterMission + 1);
         App.ViewManager.open(ViewConst.BattleMission);
     };
     /** 退出 */
     BattleWinView.prototype.onExitHandler = function () {
         var self = this;
-        App.ViewManager.close(ViewConst.BattleWin);
+        App.ViewManager.close(ViewConst.BattleWinPanel);
         App.ViewManager.close(ViewConst.BattleMission);
     };
     return BattleWinView;

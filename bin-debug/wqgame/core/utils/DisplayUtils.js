@@ -95,6 +95,7 @@ var DisplayUtils = (function (_super) {
             return;
         if (child.parent) {
             child.parent.removeChild(child);
+            ObjectPool.push(child);
         }
         child = null;
     };
@@ -111,6 +112,7 @@ var DisplayUtils = (function (_super) {
                 if (node) {
                     if (node.parent) {
                         node.parent.removeChild(node);
+                        ObjectPool.push(node);
                     }
                     node = null;
                 }

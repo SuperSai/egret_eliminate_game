@@ -45,14 +45,14 @@ var BattleLoseView = (function (_super) {
     /** 再来一次 */
     BattleLoseView.prototype.onAgainHandler = function () {
         var self = this;
-        App.ViewManager.close(ViewConst.BattleWin);
+        App.ViewManager.close(ViewConst.BattleWinPanel);
         self._model.reset();
         App.ViewManager.open(ViewConst.BattleMission);
     };
     /** 退出 */
     BattleLoseView.prototype.onExitHandler = function () {
         var self = this;
-        App.ViewManager.close(ViewConst.BattleWin);
+        App.ViewManager.close(ViewConst.BattleWinPanel);
         App.ViewManager.close(ViewConst.BattleMission);
     };
     return BattleLoseView;

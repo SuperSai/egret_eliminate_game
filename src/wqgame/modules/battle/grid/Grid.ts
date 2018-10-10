@@ -9,6 +9,7 @@ class Grid extends egret.Sprite {
 	public moveFlag: boolean = false;
 	public checkMark: boolean = false;// 检查标志
 	public isSelected: boolean = false;
+	
 	private _icon: eui.Image;
 	private isAction: boolean = false;
 	private moveSpeed: number = 400;
@@ -99,6 +100,7 @@ class Grid extends egret.Sprite {
 		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.GRID_RESET_COMPLETE);
 	}
 
+	/** 掉落 */
 	public drop(row: number, column: number) {
 		let self = this;
 		let gx = App.GridManager.getGridPosX(column);

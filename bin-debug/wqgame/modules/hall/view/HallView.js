@@ -15,8 +15,10 @@ var HallView = (function (_super) {
     __extends(HallView, _super);
     function HallView($controller, $layer) {
         var _this = _super.call(this, $controller, $layer) || this;
-        _this.skinName = SkinName.HallViewSkin;
-        _this.setResources(["hall"]);
+        var self = _this;
+        self.skinName = SkinName.HallViewSkin;
+        self.setResources(["hall"]);
+        self._model = self.controller.getModel();
         return _this;
     }
     /** 对面板进行显示初始化，用于子类继承 */
@@ -37,22 +39,23 @@ var HallView = (function (_super) {
         }
         _super.prototype.open.call(this, param);
         var self = this;
-        var model = param[0];
     };
     HallView.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
         var self = this;
-        self.btn_checkpoint.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoCheckpoint, self);
-        self.setBtnEffect(["btn_checkpoint"]);
+        self.btn_map.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onEnterMapView, self);
+        self.setBtnEffect(["btn_map"]);
     };
     HallView.prototype.removeEvents = function () {
         _super.prototype.removeEvents.call(this);
         var self = this;
-        self.btn_checkpoint.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoCheckpoint, self);
+        self.btn_map.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onEnterMapView, self);
     };
-    /** 进入关卡选择界面 */
-    HallView.prototype.onGotoCheckpoint = function () {
+    /** 进入关卡选择地图 */
+    HallView.prototype.onEnterMapView = function () {
         var self = this;
+        App.SceneManager.clear();
+        App.SceneManager.runScene(SceneConsts.BATTLE);
     };
     return HallView;
 }(BaseEuiView));

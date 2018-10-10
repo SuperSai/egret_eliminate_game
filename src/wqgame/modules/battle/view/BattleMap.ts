@@ -43,6 +43,7 @@ class BattleMap extends BaseEuiView {
 	/** 初始化关卡 */
 	private initLevel(mapCon: eui.Group, index: number, mapVO: MapVO): void {
 		let self = this;
+		self._model.mapItemDic.clear();
 		for (let i: number = 0; i < mapVO.path.length; i++) {
 			let pos: number[] = ObjectUtils.splitToNumber(mapVO.path[i]);
 			let levelItem: MapBtnItem = ObjectPool.pop(MapBtnItem, "MapBtnItem");

@@ -50,13 +50,16 @@ var BattleView = (function (_super) {
     BattleView.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
         var self = this;
-        self.scroller.addEventListener(egret.Event.CHANGE, self.onMapChange, self);
+        // self.scroller.addEventListener(egret.Event.CHANGE, self.onMapChange, self);
+        self.btn_hall.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoHall, self);
+        self.setBtnEffect(["btn_hall"]);
         self.registerFunc(BattleConst.MAP_ITEM_UPDATE, self.onUpdateMapItem, self);
     };
     BattleView.prototype.removeEvents = function () {
         _super.prototype.removeEvents.call(this);
         var self = this;
-        self.scroller.removeEventListener(egret.Event.CHANGE, self.onMapChange, self);
+        self.btn_hall.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoHall, self);
+        // self.scroller.removeEventListener(egret.Event.CHANGE, self.onMapChange, self);
     };
     BattleView.prototype.onMapChange = function () {
         var self = this;
@@ -76,6 +79,25 @@ var BattleView = (function (_super) {
         var self = this;
         self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission).initState();
         self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1).initState();
+        if (self.checkIsEnterNextMap()) {
+            self.map.addMap();
+            self.scroller.viewport.validateNow();
+        }
+    };
+    /** 检查是否进入下一张地图 */
+    BattleView.prototype.checkIsEnterNextMap = function () {
+        var self = this;
+        var maxMission = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
+        if (self._model.mapItemDic.ContainsKey(maxMission)) {
+            if (self._model.mapItemDic.TryGetValue(maxMission).isListener) {
+                return true;
+            }
+        }
+        return false;
+    };
+    /** 回到大厅 */
+    BattleView.prototype.onGotoHall = function () {
+        App.SceneManager.runScene(SceneConsts.HALL);
     };
     return BattleView;
 }(BaseEuiView));

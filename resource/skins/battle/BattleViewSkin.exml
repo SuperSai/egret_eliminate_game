@@ -10,10 +10,18 @@
 
 
 
-		<e:Scroller id="scroller" width="100%" bounces="false" height="1280" touchEnabled="true" horizontalCenter="0" verticalCenter="0">
+		<e:Scroller id="scroller" width="100%" bounces="false" height="1280" touchEnabled="true" horizontalCenter="0" verticalCenter="0" locked="true">
 		
 		</e:Scroller>
 		<ns1:CurrencyCom id="currency" skinName="CurrencyComSkin" left="8" top="8"/>
+		<e:Button id="btn_hall" label="" left="7" bottom="9" name="btn_hall_1#1" touchChildren="false">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="battle_json.battle_btn_main" source.down="battle_json.battle_btn_main" source.disabled="battle_json.battle_btn_main"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
 	</e:Group>
 
 

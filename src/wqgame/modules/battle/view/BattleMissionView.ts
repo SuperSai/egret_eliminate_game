@@ -9,11 +9,11 @@ class BattleMissionView extends BaseEuiView {
 	public txt_step: eui.Label;//步数
 	public txt_targetScore: eui.Label;
 
-	private linePanel: egret.Sprite;
-	private gridPanel: egret.Sprite;
-	private state: BattleState = BattleState.Play;
-	private pointLine: eui.Image;
-	private pointLineBeganCell: Grid;// 提示点的起点cell
+	private _linePanel: egret.Sprite;
+	private _gridPanel: egret.Sprite;
+	private _state: BattleState = BattleState.Play;
+	private _line: eui.Image;
+	private _beganCell: Grid;// 提示点的起点cell
 	private _model: BattleModel;
 
 	public constructor($controller: BaseController, $layer: number) {
@@ -47,7 +47,7 @@ class BattleMissionView extends BaseEuiView {
 		for (let i = 0; i < App.GridManager.row; i++) {
 			for (let j = 0; j < App.GridManager.column; j++) {
 				let id = App.GridManager.genInitGridId(i, j);
-				let cell: Grid = BattleLogic.createGrid(this.gridPanel, i, j, id);
+				let cell: Grid = BattleLogic.createGrid(this._gridPanel, i, j, id);
 				cell.x = App.GridManager.getGridPosX(j);
 				cell.y = App.GridManager.getGridPosY(i);
 			}
@@ -55,52 +55,47 @@ class BattleMissionView extends BaseEuiView {
 	}
 
 	private initGridPanel() {
-		if (this.gridPanel) {
-			App.DisplayUtils.removeAllChildren(this.gridPanel);
+		let self = this;
+		if (self._gridPanel) {
+			App.DisplayUtils.removeAllChildren(self._gridPanel);
 		}
-		this.gridPanel = new egret.Sprite();
-		this.gridPanel.name = "gridPanel";
-		this.gridPanel.width = App.GridManager.column * Grid.Width + (App.GridManager.column - 1) * App.GridManager.columnSpace;
-		this.gridPanel.height = App.GridManager.row * Grid.Height + (App.GridManager.row - 1) * App.GridManager.rowSpace;
-		this.gridPanel.anchorOffsetX = this.gridPanel.width / 2;
-		this.gridPanel.anchorOffsetY = this.gridPanel.height;
-		this.gridPanel.x = App.StageUtils.getWidth() / 2;
-		this.gridPanel.y = App.StageUtils.getHeight() / 2 + 200;
+		self._gridPanel = new egret.Sprite();
+		self._gridPanel.width = App.GridManager.column * Grid.Width + (App.GridManager.column - 1) * App.GridManager.columnSpace;
+		self._gridPanel.height = App.GridManager.row * Grid.Height + (App.GridManager.row - 1) * App.GridManager.rowSpace;
+		self._gridPanel.anchorOffsetX = self._gridPanel.width / 2;
+		self._gridPanel.anchorOffsetY = self._gridPanel.height;
+		self._gridPanel.x = App.StageUtils.getWidth() / 2;
+		self._gridPanel.y = App.StageUtils.getHeight() / 2 + 200;
 
-		let rect = new eui.Rect(this.gridPanel.width, this.gridPanel.height, 0x0000ff);
+		let rect = new eui.Rect(self._gridPanel.width, self._gridPanel.height, 0x0000ff);
 		rect.alpha = 0;
-		this.gridPanel.addChild(rect);
+		self._gridPanel.addChild(rect);
 
-		this.gridPanel.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBegan, this);
-		this.gridPanel.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onTouchMove, this);
-		this.gridPanel.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEnd, this);
-		this.gridPanel.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onOutSide, this);
-		this.addChild(this.gridPanel);
+		self._gridPanel.addEventListener(egret.TouchEvent.TOUCH_BEGIN, self.onTouchBegan, self);
+		self._gridPanel.addEventListener(egret.TouchEvent.TOUCH_MOVE, self.onTouchMove, self);
+		self._gridPanel.addEventListener(egret.TouchEvent.TOUCH_END, self.onTouchEnd, self);
+		self._gridPanel.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, self.onOutSide, self);
+		self.addChild(self._gridPanel);
 	}
 
 	private initLinePanel() {
-		if (this.linePanel) {
-			App.DisplayUtils.removeAllChildren(this.linePanel);
-		}
-		this.linePanel = new egret.Sprite();
-		this.linePanel.name = "linePanel";
-		this.linePanel.width = App.GridManager.column * Grid.Width + (App.GridManager.column - 1) * App.GridManager.columnSpace;
-		this.linePanel.height = App.GridManager.row * Grid.Height + (App.GridManager.row - 1) * App.GridManager.rowSpace;
-		this.linePanel.anchorOffsetX = this.linePanel.width / 2;
-		this.linePanel.anchorOffsetY = this.linePanel.height;
-		this.linePanel.x = App.StageUtils.getWidth() / 2;
-		this.linePanel.y = App.StageUtils.getHeight() / 2 + 200;
-
-		this.linePanel.graphics.beginFill(0x00ff00, 0);
-		this.linePanel.graphics.drawRect(0, 0, this.linePanel.width, this.linePanel.height);
-		this.linePanel.graphics.endFill();
-
-		this.addChild(this.linePanel);
-	}
-
-	public open(...param: any[]): void {
-		super.open(param);
 		let self = this;
+		if (self._linePanel) {
+			App.DisplayUtils.removeAllChildren(self._linePanel);
+		}
+		self._linePanel = new egret.Sprite();
+		self._linePanel.width = App.GridManager.column * Grid.Width + (App.GridManager.column - 1) * App.GridManager.columnSpace;
+		self._linePanel.height = App.GridManager.row * Grid.Height + (App.GridManager.row - 1) * App.GridManager.rowSpace;
+		self._linePanel.anchorOffsetX = self._linePanel.width / 2;
+		self._linePanel.anchorOffsetY = self._linePanel.height;
+		self._linePanel.x = App.StageUtils.getWidth() / 2;
+		self._linePanel.y = App.StageUtils.getHeight() / 2 + 200;
+
+		self._linePanel.graphics.beginFill(0x00ff00, 0);
+		self._linePanel.graphics.drawRect(0, 0, self._linePanel.width, self._linePanel.height);
+		self._linePanel.graphics.endFill();
+
+		self.addChild(self._linePanel);
 	}
 
 	public addEvents(): void {
@@ -120,6 +115,7 @@ class BattleMissionView extends BaseEuiView {
 
 	private onPauseHandler(): void {
 		let self = this;
+		App.ViewManager.open(ViewConst.BattlePausePanel);
 	}
 
 	private onOutSide() {
@@ -127,43 +123,47 @@ class BattleMissionView extends BaseEuiView {
 	}
 
 	private onTouchBegan(touch: egret.TouchEvent) {
-		if (this.state == BattleState.Play) {
-			BattleLogic.doTouchBegan(this.pointLine, this.linePanel, this.pointLineBeganCell, touch.stageX, touch.stageY);
+		let self = this;
+		if (self._state == BattleState.Play) {
+			BattleLogic.doTouchBegan(self._line, self._linePanel, self._beganCell, touch.stageX, touch.stageY);
 		}
 	}
 
 	private onTouchMove(touch: egret.TouchEvent) {
-		if (this.state == BattleState.Play) {
-			BattleLogic.doTouchMove(this.pointLine, this.linePanel, this.pointLineBeganCell, touch.stageX, touch.stageY);
+		let self = this;
+		if (self._state == BattleState.Play) {
+			BattleLogic.doTouchMove(self._line, self._linePanel, self._beganCell, touch.stageX, touch.stageY);
 		}
 	}
 
 	private onTouchEnd() {
+		let self = this;
 		// 判断消除
 		let listLenght = App.GridManager.clearList.length;
 		Log.trace("可以消除的数量为: " + listLenght);
 		if (listLenght >= App.GridManager.baseCleanNum) {
-			if (this.state == BattleState.Play) {
-				this.state = BattleState.DealLogic;
-				this.cleanOneByeOne();
+			if (self._state == BattleState.Play) {
+				self._state = BattleState.DealLogic;
+				self.cleanOneByeOne();
 			}
 		}
 		for (let k in App.GridManager.clearList) {
 			let item: Grid = App.GridManager.clearList[k];
 			item.selectState = false;
 		}
-		this.linePanel.removeChildren();
+		self._linePanel.removeChildren();
 	}
 
 	private cleanOneByeOne() {
+		let self = this;
 		let len = App.GridManager.clearList.length;
 		if (len == 0) {	// 清理完毕
 			BattleLogic.deleteClearList();
-			BattleLogic.dropAndFillGrid(this.gridPanel);
+			BattleLogic.dropAndFillGrid(self._gridPanel);
 		} else {	// 清除下一个
 			let item: Grid = App.GridManager.clearList[0];
-			BattleLogic.createDirty(this.gridPanel, item);
-			this.addScore(10, item);
+			BattleLogic.createDirty(self._gridPanel, item);
+			self.addScore(10, item);
 			item.reset();
 			// SoundsMgr.removeCell(this.cleanIndex);
 			BattleLogic.cleanIndex++;
@@ -174,14 +174,14 @@ class BattleMissionView extends BaseEuiView {
 		let self = this;
 		self._model.currScore += score;
 		self.txt_score.text = App.LanguageManager.getLanguageText("battle.txt.04", self._model.currScore);
-
-		let scoreLabel = new eui.Label();
+		//分数
+		let scoreLabel = ObjectPool.pop(eui.Label, "eui.Label");
 		scoreLabel.text = score.toString();
 		scoreLabel.anchorOffsetX = scoreLabel.width / 2;
 		scoreLabel.anchorOffsetY = scoreLabel.height / 2;
 		scoreLabel.x = grid.x;
 		scoreLabel.y = grid.y;
-		self.gridPanel.addChild(scoreLabel);
+		self._gridPanel.addChild(scoreLabel);
 		let tw2 = egret.Tween.get(scoreLabel);
 		tw2.to({ y: grid.y - 40 }, 400)
 			.call((node) => {
@@ -190,12 +190,14 @@ class BattleMissionView extends BaseEuiView {
 			}, self, [scoreLabel]);
 	}
 
+	/** 格子掉落完成 */
 	private onGridDropComplete() {
+		let self = this;
 		let isMove: boolean = App.GridManager.isAllMove();
 		//没有移动的格子了
 		if (!isMove) {
-			this.state = BattleState.Play;
-			this.checkStep();
+			self._state = BattleState.Play;
+			self.checkStep();
 		}
 	}
 
@@ -210,7 +212,7 @@ class BattleMissionView extends BaseEuiView {
 				// 失败
 				self._model.isOver = true;
 				self._model.isWin = false;
-				App.ViewManager.open(ViewConst.BattleLose, self._model);
+				App.ViewManager.open(ViewConst.BattleLosePanel, self._model);
 			}
 		} else {
 			if (self._model.currScore >= self._model.targetScore) {
@@ -218,7 +220,7 @@ class BattleMissionView extends BaseEuiView {
 				if (self._model.isOver == false) {
 					self._model.isOver = true;
 					self._model.isWin = true;
-					App.ViewManager.open(ViewConst.BattleWin, self._model);
+					App.ViewManager.open(ViewConst.BattleWinPanel, self._model);
 				}
 			}
 		}
@@ -227,7 +229,11 @@ class BattleMissionView extends BaseEuiView {
 	public close(...param: any[]): void {
 		super.close(param);
 		let self = this;
-		App.DisplayUtils.removeAllChildren(self);
+		self._beganCell = null;
+		self._state = BattleState.Play;
+		App.DisplayUtils.removeFromParent(self._line);
+		App.DisplayUtils.removeFromParent(self._linePanel);
+		App.DisplayUtils.removeFromParent(self._gridPanel);
 	}
 
 }

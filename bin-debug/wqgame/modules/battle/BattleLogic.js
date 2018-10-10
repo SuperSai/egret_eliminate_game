@@ -13,21 +13,23 @@ var BattleLogic = (function () {
             // 提示线更新起点
         }
     };
+    /** 创建格子 */
     BattleLogic.createGrid = function (gridPanel, row, column, id) {
-        var grid = ObjectPool.pop(Grid, "Grid", id); // new Grid(id);
+        var grid = ObjectPool.pop(Grid, "Grid", id);
         grid.row = row;
         grid.column = column;
         App.GridManager.gridArray[row][column] = grid;
         gridPanel.addChild(grid);
         return grid;
     };
+    /** 创建格子和格子之间的线 */
     BattleLogic.createPointLine = function (pointLine, linePanel, pos) {
         if (pointLine) {
             if (pointLine.parent) {
-                pointLine.parent.removeChild(pointLine);
+                App.DisplayUtils.removeFromParent(pointLine);
             }
         }
-        pointLine = new eui.Image();
+        pointLine = ObjectPool.pop(eui.Image, "eui.Image");
         pointLine.texture = RES.getRes("line_png");
         pointLine.width = 0;
         pointLine.anchorOffsetX = 0;
@@ -121,29 +123,13 @@ var BattleLogic = (function () {
                 // 是否符合周围的
                 var sameID = App.GridManager.getClearListId();
                 var isArround = App.GridManager.isInArround(grid);
-                if (grid.id == sameID &&
-                    isArround) {
+                // 类型相同,推入消除队列 && 在上个Grid的周围
+                if (grid.id == sameID && isArround) {
                     grid.selectState = true;
                     BattleLogic.pushClearGrid(grid, linePanel);
                     this.updatePointLineBegan(pointLine, linePanel, $grid, x, y);
                 }
             }
-        }
-    };
-    // 舞台坐标x, y 更新提示线的结束点
-    BattleLogic.updatePointLineEnd = function (pointLine, linePanel, $grid, x, y) {
-        if (pointLine && $grid) {
-            var linePoint = new egret.Point($grid.x, $grid.y);
-            // 坐标转换
-            var p = linePanel.globalToLocal(x, y);
-            var distance = egret.Point.distance(linePoint, p);
-            pointLine.width = distance;
-            pointLine.x = linePoint.x;
-            pointLine.y = linePoint.y;
-            pointLine.anchorOffsetX = 0;
-            pointLine.anchorOffsetY = pointLine.height / 2;
-            var angle = App.MathUtils.getLineAngle(linePoint, p);
-            pointLine.rotation = angle;
         }
     };
     // 更新提示线的起点
@@ -155,9 +141,26 @@ var BattleLogic = (function () {
             this.updatePointLineEnd(pointLine, linePanel, $grid, x, y);
         }
     };
+    // 舞台坐标x, y更新提示线的结束点
+    BattleLogic.updatePointLineEnd = function (pointLine, linePanel, $grid, x, y) {
+        if (pointLine && $grid) {
+            var linePoint = ObjectPool.pop(egret.Point, "egret.Point", $grid.x, $grid.y); // new egret.Point($grid.x, $grid.y);
+            // 坐标转换
+            var p = linePanel.globalToLocal(x, y);
+            var distance = egret.Point.distance(linePoint, p);
+            pointLine.width = distance;
+            pointLine.x = linePoint.x;
+            pointLine.y = linePoint.y;
+            pointLine.anchorOffsetX = 0;
+            pointLine.anchorOffsetY = pointLine.height / 2;
+            var angle = App.MathUtils.getLineAngle(linePoint, p);
+            pointLine.rotation = angle;
+            ObjectPool.push(linePoint);
+        }
+    };
     BattleLogic.drawLine = function (linePanel, fromGrid, toGrid) {
         var lineTexture = RES.getRes("battleMission_line");
-        var line = new eui.Image();
+        var line = ObjectPool.pop(eui.Image, "eui.Image");
         line.texture = lineTexture;
         line.anchorOffsetX = 0;
         line.anchorOffsetY = lineTexture.textureHeight / 2;

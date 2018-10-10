@@ -5,6 +5,7 @@ class BattleView extends BaseEuiView {
 
 	public scroller: eui.Scroller;
 	public currency: CurrencyCom; // 货币组件
+	public btn_hall: eui.Button;
 
 	public map: BattleMap;	// 地图
 	private _model: BattleModel;
@@ -46,12 +47,15 @@ class BattleView extends BaseEuiView {
 		super.addEvents();
 		let self = this;
 		// self.scroller.addEventListener(egret.Event.CHANGE, self.onMapChange, self);
+		self.btn_hall.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoHall, self);
+		self.setBtnEffect(["btn_hall"]);
 		self.registerFunc(BattleConst.MAP_ITEM_UPDATE, self.onUpdateMapItem, self);
 	}
 
 	public removeEvents(): void {
 		super.removeEvents();
 		let self = this;
+		self.btn_hall.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoHall, self);
 		// self.scroller.removeEventListener(egret.Event.CHANGE, self.onMapChange, self);
 	}
 
@@ -90,5 +94,10 @@ class BattleView extends BaseEuiView {
 			}
 		}
 		return false;
+	}
+
+	/** 回到大厅 */
+	private onGotoHall(): void {
+		App.SceneManager.runScene(SceneConsts.HALL);
 	}
 }

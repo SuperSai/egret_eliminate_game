@@ -9,7 +9,7 @@
 			"name": "battle"
 		},
 		{
-			"keys": "hall_bg,hallIcons_json",
+			"keys": "hall_bg,hallIcons_json,hall_json",
 			"name": "hall"
 		},
 		{
@@ -43,7 +43,7 @@
 			"url": "cn/asset/atlas/battle/battle.json",
 			"type": "sheet",
 			"name": "battle_json",
-			"subkeys": "battle_black,battle_blue,battle_green,battle_mission_bg,battle_npc,battle_red"
+			"subkeys": "battle_black,battle_blue,battle_btn_main,battle_green,battle_mission_bg,battle_npc,battle_red"
 		},
 		{
 			"url": "cn/asset/atlas/battle/battleIcon.json",
@@ -67,6 +67,12 @@
 			"type": "sheet",
 			"name": "gameOver_json",
 			"subkeys": "gameOver_bg,gameOver_bg_02,gameOver_lose,gameOver_title_bg,gameOver_win"
+		},
+		{
+			"url": "cn/asset/atlas/hall/hall.json",
+			"type": "sheet",
+			"name": "hall_json",
+			"subkeys": "hall_battle,hall_pet_dz"
 		}
 	]
 }

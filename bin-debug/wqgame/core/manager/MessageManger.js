@@ -46,7 +46,6 @@ var MessageManger = (function (_super) {
         egret.Tween.get(label).wait(1000).to({ alpha: 0 }, 1000);
         egret.Tween.get(label).to({ verticalCenter: -100 }, 2000).call(function () {
             egret.Tween.removeTweens(label);
-            ObjectPool.push(label);
             label.alpha = 1;
             label.verticalCenter = 0;
             App.DisplayUtils.removeFromParent(label);

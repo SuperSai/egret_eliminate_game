@@ -42,7 +42,7 @@ class BattleWinView extends BaseEuiAlert {
 	/** 进入下一关卡 */
 	private onNextMission(): void {
 		let self = this;
-		App.ViewManager.close(ViewConst.BattleWin);
+		App.ViewManager.close(ViewConst.BattleWinPanel);
 		self._model.initMissionData(self._model.enterMission + 1);
 		App.ViewManager.open(ViewConst.BattleMission);
 	}
@@ -50,7 +50,7 @@ class BattleWinView extends BaseEuiAlert {
 	/** 退出 */
 	private onExitHandler(): void {
 		let self = this;
-		App.ViewManager.close(ViewConst.BattleWin);
+		App.ViewManager.close(ViewConst.BattleWinPanel);
 		App.ViewManager.close(ViewConst.BattleMission);
 	}
 }

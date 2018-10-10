@@ -4,7 +4,7 @@
 
 
 	<e:Group height="100%" width="100%" horizontalCenter="0" verticalCenter="0">
-		<e:Image source="hall_bg" left="0" right="0" top="0" bottom="0"/>
+		<e:Image source="hall_bg" left="0" right="0" top="0" bottom="0" locked="true"/>
 		<e:Image source="hall_json.hall_bg_down" x="360" y="1280"/>
 		<e:Button id="btn_checkpoint" label="" touchChildren="false" name="btn_checkpoint_1#1" horizontalCenter="0" verticalCenter="0">
 			<e:skinName>
@@ -14,7 +14,19 @@
 			</e:Skin>
 			</e:skinName>
 		</e:Button>
-		<ns1:CurrencyCom id="currency" skinName="CurrencyComSkin" left="12" top="14"/>
+		<ns1:CurrencyCom id="currency" skinName="CurrencyComSkin" top="7" left="6"/>
+		<e:Group left="11" top="58">
+			<e:Image id="headImg" source="" width="100" height="100" x="5" y="5"/>
+			<e:Image source="frames_json.frame_head_light" x="0" y="0"/>
+		</e:Group>
+		<e:Group id="petGroup" left="42" verticalCenter="70">
+			<e:Image source="hall_json.hall_pet_dz" x="0" y="0"/>
+			<e:Group id="petPos" width="5" height="5" x="70" y="43"/>
+		</e:Group>
+		<e:Group id="btn_map" top="366" right="28" name="btn_map_1#1" touchChildren="false">
+			<e:Image source="hall_json.hall_battle"/>
+			<e:Label text="冒险" horizontalCenter="0" verticalCenter="0" fontFamily="Microsoft YaHei" bold="true" textAlign="center" size="80" stroke="4" strokeColor="0x1f6368"/>
+		</e:Group>
 	</e:Group>
 	
 </e:Skin>

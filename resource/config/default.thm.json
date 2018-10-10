@@ -23,6 +23,7 @@
 		"resource/skins/battle/BattleViewSkin.exml",
 		"resource/skins/battle/BattleWinSkin.exml",
 		"resource/skins/battle/item/MapBtnItemSkin.exml",
+		"resource/skins/battle/panel/BattlePausePanelSkin.exml",
 		"resource/skins/battle/panel/MissionPanelSkin.exml",
 		"resource/skins/common/component/ButtonComSkin.exml",
 		"resource/skins/eui_skins/ButtonSkin.exml",

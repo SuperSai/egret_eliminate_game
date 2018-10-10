@@ -201,6 +201,7 @@ class GridManager extends BaseClass {
 		return 0;
 	}
 
+	/** 是否在范围内 */
 	public isInArround(grid: Grid) {
 		let self = this;
 		let row: number = grid.row;
@@ -271,7 +272,7 @@ class GridManager extends BaseClass {
 		return false;
 	}
 
-	// 获取空的cell
+	// 获取空的Grid
 	public getEmptyGrid() {
 		let self = this;
 		let retArr: any[] = [];

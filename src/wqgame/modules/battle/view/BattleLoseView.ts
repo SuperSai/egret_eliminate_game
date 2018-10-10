@@ -40,7 +40,7 @@ class BattleLoseView extends BaseEuiAlert {
 	/** 再来一次 */
 	private onAgainHandler(): void {
 		let self = this;
-		App.ViewManager.close(ViewConst.BattleWin);
+		App.ViewManager.close(ViewConst.BattleWinPanel);
 		self._model.reset();
 		App.ViewManager.open(ViewConst.BattleMission);
 	}
@@ -48,7 +48,7 @@ class BattleLoseView extends BaseEuiAlert {
 	/** 退出 */
 	private onExitHandler(): void {
 		let self = this;
-		App.ViewManager.close(ViewConst.BattleWin);
+		App.ViewManager.close(ViewConst.BattleWinPanel);
 		App.ViewManager.close(ViewConst.BattleMission);
 	}
 }

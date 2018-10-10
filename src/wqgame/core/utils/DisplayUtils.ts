@@ -91,6 +91,7 @@ class DisplayUtils extends BaseClass {
         if (!child) return;
         if (child.parent) {
             child.parent.removeChild(child);
+            ObjectPool.push(child);
         }
         child = null;
     }
@@ -107,6 +108,7 @@ class DisplayUtils extends BaseClass {
                 if (node) {
                     if (node.parent) {
                         node.parent.removeChild(node)
+                        ObjectPool.push(node);
                     }
                     node = null;
                 }

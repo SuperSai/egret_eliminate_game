@@ -16,6 +16,7 @@ var SkinName = (function () {
     SkinName.BattleMissionViewSkin = "resource/skins/battle/BattleMissionViewSkin.exml";
     SkinName.BattleWinSkin = "resource/skins/battle/BattleWinSkin.exml";
     SkinName.BattleLoseSkin = "resource/skins/battle/BattleLoseSkin.exml";
+    SkinName.BattlePausePanelSkin = "resource/skins/battle/panel/BattlePausePanelSkin.exml";
     return SkinName;
 }());
 __reflect(SkinName.prototype, "SkinName");

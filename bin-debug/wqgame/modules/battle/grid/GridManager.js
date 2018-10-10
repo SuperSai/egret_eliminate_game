@@ -195,6 +195,7 @@ var GridManager = (function (_super) {
         }
         return 0;
     };
+    /** 是否在范围内 */
     GridManager.prototype.isInArround = function (grid) {
         var self = this;
         var row = grid.row;
@@ -260,7 +261,7 @@ var GridManager = (function (_super) {
         }
         return false;
     };
-    // 获取空的cell
+    // 获取空的Grid
     GridManager.prototype.getEmptyGrid = function () {
         var self = this;
         var retArr = [];

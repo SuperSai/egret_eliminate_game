@@ -50,6 +50,7 @@ var BattleMap = (function (_super) {
     /** 初始化关卡 */
     BattleMap.prototype.initLevel = function (mapCon, index, mapVO) {
         var self = this;
+        self._model.mapItemDic.clear();
         for (var i = 0; i < mapVO.path.length; i++) {
             var pos = ObjectUtils.splitToNumber(mapVO.path[i]);
             var levelItem = ObjectPool.pop(MapBtnItem, "MapBtnItem");

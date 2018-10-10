@@ -23,4 +23,6 @@ class SkinName {
 
 	public static BattleLoseSkin: string = "resource/skins/battle/BattleLoseSkin.exml";
 
+	public static BattlePausePanelSkin: string = "resource/skins/battle/panel/BattlePausePanelSkin.exml";
+
 }
