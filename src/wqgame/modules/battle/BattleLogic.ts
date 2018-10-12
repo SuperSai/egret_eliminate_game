@@ -75,7 +75,7 @@ class BattleLogic {
 
 	public static createDirty(gridPanel: egret.Sprite, $grid: Grid) {
 		// 痕迹
-		let dirty = new eui.Image("battle_icon_" + $grid.id);
+		let dirty = ObjectPool.pop(eui.Image, "eui.Image", "battle_icon_" + $grid.id);// new eui.Image("battle_icon_" + $grid.id);
 		let texture = RES.getRes("battle_icon_" + $grid.id);
 		dirty.anchorOffsetX = texture.textureWidth / 2;
 		dirty.anchorOffsetY = texture.textureHeight / 2;
@@ -90,10 +90,9 @@ class BattleLogic {
 		tw.to({ scaleX: 1.2, scaleY: 1.2 }, 400, egret.Ease.bounceOut)
 			.wait(200)
 			.to({ alpha: 0 }, 100)
-			.call(function (node) {
-				if (node && node.parent) {
-					node.parent.removeChild(node);
-				}
+			.call((node) => {
+				egret.Tween.removeTweens(node);
+				App.DisplayUtils.removeFromParent(node);
 			}, this, [dirty]);
 	}
 
@@ -105,9 +104,10 @@ class BattleLogic {
 			BattleLogic.pushClearGrid(grid, linePanel);
 			Log.trace("row: " + grid.row + ", column: " + grid.column);
 			//提示线
-			let point = new egret.Point(grid.x, grid.y);
+			let point = ObjectPool.pop(egret.Point, "egret.Point", grid.x, grid.y);// new egret.Point(grid.x, grid.y);
 			BattleLogic.createPointLine(pointLine, linePanel, point);
 			$grid = grid;
+			ObjectPool.push(point);
 		}
 	}
 
@@ -117,8 +117,8 @@ class BattleLogic {
 		if (grid) {
 			if (grid.isSelected) {
 				// 倒数第二个要回退
-				let b = App.GridManager.getIsLastTwoInClearList(grid);
-				if (b) {
+				let flag: boolean = App.GridManager.getIsLastTwoInClearList(grid);
+				if (flag) {
 					App.GridManager.removeTopLine();
 					let topItem: Grid = App.GridManager.removeTopItemInCleanList();
 					topItem.selectState = false;

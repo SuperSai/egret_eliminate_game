@@ -111,8 +111,8 @@ var BattleLogic = (function () {
         if (grid) {
             if (grid.isSelected) {
                 // 倒数第二个要回退
-                var b = App.GridManager.getIsLastTwoInClearList(grid);
-                if (b) {
+                var flag = App.GridManager.getIsLastTwoInClearList(grid);
+                if (flag) {
                     App.GridManager.removeTopLine();
                     var topItem = App.GridManager.removeTopItemInCleanList();
                     topItem.selectState = false;
