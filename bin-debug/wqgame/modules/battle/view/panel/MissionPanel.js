@@ -17,6 +17,7 @@ var MissionPanel = (function (_super) {
         var _this = _super.call(this, $controller, $layer, SkinName.MissionPanelSkin) || this;
         var self = _this;
         self._model = self.controller.getModel();
+        self.cacheAsBitmap = true;
         return _this;
     }
     MissionPanel.prototype.initData = function () {

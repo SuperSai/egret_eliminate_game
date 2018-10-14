@@ -14,6 +14,7 @@ class MissionPanel extends BaseEuiAlert {
 		super($controller, $layer, SkinName.MissionPanelSkin);
 		let self = this;
 		self._model = <BattleModel>self.controller.getModel();
+		self.cacheAsBitmap = true;
 	}
 
 

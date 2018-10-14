@@ -16,7 +16,6 @@ var GlobleVOData = (function (_super) {
     function GlobleVOData() {
         var _this = _super.call(this) || this;
         _this._hasParasComplete = false;
-        _this._totalStepCsvList = new TSDictionary();
         _this._needParseCount = 0;
         _this._currParseCount = 0;
         return _this;
@@ -30,6 +29,8 @@ var GlobleVOData = (function (_super) {
     });
     GlobleVOData.prototype.setup = function () {
         var self = this;
+        self._totalStepCsvList = new TSDictionary();
+        GlobleVOData.AllCacheData = new TSDictionary();
         self.initModel();
         self.initStep();
     };
@@ -116,7 +117,6 @@ var GlobleVOData = (function (_super) {
         var arr = dic.TryGetListByCondition(value);
         return arr;
     };
-    GlobleVOData.AllCacheData = new TSDictionary();
     GlobleVOData.ServerConfigVO = "ServerConfig_json";
     GlobleVOData.BoneAnimationVO = "BoneAnimation_json";
     GlobleVOData.SoundVO = "Sound_json";

@@ -16,6 +16,7 @@ var BattlePausePanel = (function (_super) {
     function BattlePausePanel($controller, $layer) {
         var _this = _super.call(this, $controller, $layer, SkinName.BattlePausePanelSkin) || this;
         var self = _this;
+        self.cacheAsBitmap = true;
         return _this;
     }
     BattlePausePanel.prototype.addEvents = function () {

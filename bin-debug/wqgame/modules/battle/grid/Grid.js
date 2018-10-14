@@ -24,6 +24,7 @@ var Grid = (function (_super) {
         self.id = $id;
         self._icon = new eui.Image();
         self.addChild(self._icon);
+        self.cacheAsBitmap = true;
         self.addEventListener(egret.Event.ADDED_TO_STAGE, self.onAddToStage, self);
         return _this;
     }

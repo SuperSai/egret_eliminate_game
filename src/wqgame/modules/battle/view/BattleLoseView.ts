@@ -14,6 +14,7 @@ class BattleLoseView extends BaseEuiAlert {
 		let self = this;
 		self.isMaskTouch = false;
 		self.setResources(["gameOver"]);
+		self.cacheAsBitmap = true;
 	}
 
 	public open(...param: any[]): void {

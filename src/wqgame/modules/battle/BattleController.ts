@@ -24,6 +24,7 @@ class BattleController extends BaseController {
 
 	private onBattleInit(): void {
 		let self = this;
+		self._battleModel.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
 		App.ViewManager.open(ViewConst.Battle);
 		self.initRegisterView();
 	}

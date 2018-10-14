@@ -9,6 +9,7 @@ class BattlePausePanel extends BaseEuiAlert {
 	public constructor($controller: BaseController, $layer: number) {
 		super($controller, $layer, SkinName.BattlePausePanelSkin);
 		let self = this;
+		self.cacheAsBitmap = true;
 	}
 
 	public addEvents(): void {

@@ -13,6 +13,7 @@ class LoginView extends BaseEuiView {
 		super($controller, $layer);
 		this.skinName = SkinName.LoginViewSkin;
 		this.setResources(["login"]);
+		this.cacheAsBitmap = true;
 	}
 
 	/** 对面板进行显示初始化，用于子类继承 */
@@ -25,71 +26,71 @@ class LoginView extends BaseEuiView {
 	public initData(): void {
 		super.initData();
 		let self = this;
-		let vertexSrc =
-			"attribute vec2 aVertexPosition;\n" +
-			"attribute vec2 aTextureCoord;\n" +
-			"attribute vec2 aColor;\n" +
+		// let vertexSrc =
+		// 	"attribute vec2 aVertexPosition;\n" +
+		// 	"attribute vec2 aTextureCoord;\n" +
+		// 	"attribute vec2 aColor;\n" +
 
-			"uniform vec2 projectionVector;\n" +
+		// 	"uniform vec2 projectionVector;\n" +
 
-			"varying vec2 vTextureCoord;\n" +
-			"varying vec4 vColor;\n" +
+		// 	"varying vec2 vTextureCoord;\n" +
+		// 	"varying vec4 vColor;\n" +
 
-			"const vec2 center = vec2(-1.0, 1.0);\n" +
+		// 	"const vec2 center = vec2(-1.0, 1.0);\n" +
 
-			"void main(void) {\n" +
-			"   gl_Position = vec4( (aVertexPosition / projectionVector) + center , 0.0, 1.0);\n" +
-			"   vTextureCoord = aTextureCoord;\n" +
-			"   vColor = vec4(aColor.x, aColor.x, aColor.x, aColor.x);\n" +
-			"}";
-		let fragmentSrc3 = [
-			"precision lowp float;\n" +
-			"varying vec2 vTextureCoord;",
-			"varying vec4 vColor;\n",
-			"uniform sampler2D uSampler;",
+		// 	"void main(void) {\n" +
+		// 	"   gl_Position = vec4( (aVertexPosition / projectionVector) + center , 0.0, 1.0);\n" +
+		// 	"   vTextureCoord = aTextureCoord;\n" +
+		// 	"   vColor = vec4(aColor.x, aColor.x, aColor.x, aColor.x);\n" +
+		// 	"}";
+		// let fragmentSrc3 = [
+		// 	"precision lowp float;\n" +
+		// 	"varying vec2 vTextureCoord;",
+		// 	"varying vec4 vColor;\n",
+		// 	"uniform sampler2D uSampler;",
 
-			"uniform vec2 center;",
-			"uniform vec3 params;", // 10.0, 0.8, 0.1"
-			"uniform float time;",
+		// 	"uniform vec2 center;",
+		// 	"uniform vec3 params;", // 10.0, 0.8, 0.1"
+		// 	"uniform float time;",
 
-			"void main()",
-			"{",
-			"vec2 uv = vTextureCoord.xy;",
-			"vec2 texCoord = uv;",
+		// 	"void main()",
+		// 	"{",
+		// 	"vec2 uv = vTextureCoord.xy;",
+		// 	"vec2 texCoord = uv;",
 
-			"float dist = distance(uv, center);",
+		// 	"float dist = distance(uv, center);",
 
-			"if ( (dist <= (time + params.z)) && (dist >= (time - params.z)) )",
-			"{",
-			"float diff = (dist - time);",
-			"float powDiff = 1.0 - pow(abs(diff*params.x), params.y);",
+		// 	"if ( (dist <= (time + params.z)) && (dist >= (time - params.z)) )",
+		// 	"{",
+		// 	"float diff = (dist - time);",
+		// 	"float powDiff = 1.0 - pow(abs(diff*params.x), params.y);",
 
-			"float diffTime = diff  * powDiff;",
-			"vec2 diffUV = normalize(uv - center);",
-			"texCoord = uv + (diffUV * diffTime);",
-			"}",
+		// 	"float diffTime = diff  * powDiff;",
+		// 	"vec2 diffUV = normalize(uv - center);",
+		// 	"texCoord = uv + (diffUV * diffTime);",
+		// 	"}",
 
-			"gl_FragColor = texture2D(uSampler, texCoord);",
-			"}"
-		].join("\n");
+		// 	"gl_FragColor = texture2D(uSampler, texCoord);",
+		// 	"}"
+		// ].join("\n");
 
-		let customFilter3 = new egret.CustomFilter(
-			vertexSrc,
-			fragmentSrc3,
-			{
-				center: { x: 0.5, y: 0.5 },
-				params: { x: 10, y: 0.8, z: 0.1 },
-				time: 0
-			}
-		);
-		App.TimerManager.doFrame(0, 0, () => {
-			customFilter3.uniforms.time += 0.01;
-			if (customFilter3.uniforms.time > 1) {
-				customFilter3.uniforms.time = 0.0;
-			}
-		}, self);
+		// let customFilter3 = new egret.CustomFilter(
+		// 	vertexSrc,
+		// 	fragmentSrc3,
+		// 	{
+		// 		center: { x: 0.5, y: 0.5 },
+		// 		params: { x: 10, y: 0.8, z: 0.1 },
+		// 		time: 0
+		// 	}
+		// );
+		// App.TimerManager.doFrame(0, 0, () => {
+		// 	customFilter3.uniforms.time += 0.01;
+		// 	if (customFilter3.uniforms.time > 1) {
+		// 		customFilter3.uniforms.time = 0.0;
+		// 	}
+		// }, self);
 
-		self.bgImg.filters = [customFilter3];
+		// self.bgImg.filters = [customFilter3];
 	}
 
 	/** 面板开启执行函数，用于子类继承 */
@@ -100,9 +101,9 @@ class LoginView extends BaseEuiView {
 	public addEvents(): void {
 		super.addEvents();
 		let self = this;
-		self.btn_random.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onRandomName, self);
+		// self.btn_random.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onRandomName, self);
 		self.btn_enter.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onLogin, self);
-		self.setBtnEffect(["btn_random", "btn_enter"]);
+		// self.setBtnEffect(["btn_random", "btn_enter"]);
 	}
 
 	public removeEvents(): void {

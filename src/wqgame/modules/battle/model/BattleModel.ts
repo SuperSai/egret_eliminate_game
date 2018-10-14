@@ -30,7 +30,7 @@ class BattleModel extends BaseModel {
 	private init(): void {
 		let self = this;
 		self.mapItemDic = new TSDictionary<number, MapBtnItem>();
-		self.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
+		// self.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
 	}
 
 	public initMissionData(mission: number) {

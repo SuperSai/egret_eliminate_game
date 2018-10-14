@@ -94,8 +94,8 @@ var DisplayUtils = (function (_super) {
         if (!child)
             return;
         if (child.parent) {
-            child.parent.removeChild(child);
             ObjectPool.push(child);
+            child.parent.removeChild(child);
         }
         child = null;
     };

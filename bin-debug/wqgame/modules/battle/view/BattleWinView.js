@@ -18,6 +18,7 @@ var BattleWinView = (function (_super) {
         var self = _this;
         self.isMaskTouch = false;
         self.setResources(["gameOver"]);
+        self.cacheAsBitmap = true;
         return _this;
     }
     BattleWinView.prototype.open = function () {

@@ -22,6 +22,7 @@ class BattleMissionView extends BaseEuiView {
 		self.skinName = SkinName.BattleMissionViewSkin;
 		self.setResources(["battleMission"]);
 		self._model = <BattleModel>self.controller.getModel();
+		self.cacheAsBitmap = true;
 	}
 
 	public initUI(): void {

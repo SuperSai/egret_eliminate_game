@@ -37,8 +37,6 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.createView, this);
     }
 
-
-
     private createView(): void {
         let self = this;
         self.width = self.stage.stageWidth;
@@ -50,6 +48,7 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
         this.Bg.width = this.width;
         this.Bg.height = this.height;
         this.addChild(this.Bg);
+        this.Bg.cacheAsBitmap = true;
 
         //文本
         this.textField = new egret.TextField();

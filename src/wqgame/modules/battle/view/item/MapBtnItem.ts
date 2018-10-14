@@ -10,6 +10,7 @@ class MapBtnItem extends BaseEuiItem {
 
 	public constructor() {
 		super(SkinName.MapBtnItemSkin);
+		this.cacheAsBitmap = true;
 	}
 
 

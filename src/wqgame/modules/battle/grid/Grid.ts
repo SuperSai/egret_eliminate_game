@@ -9,7 +9,7 @@ class Grid extends egret.Sprite {
 	public moveFlag: boolean = false;
 	public checkMark: boolean = false;// 检查标志
 	public isSelected: boolean = false;
-	
+
 	private _icon: eui.Image;
 	private isAction: boolean = false;
 	private moveSpeed: number = 400;
@@ -20,6 +20,7 @@ class Grid extends egret.Sprite {
 		self.id = $id;
 		self._icon = new eui.Image();
 		self.addChild(self._icon);
+		self.cacheAsBitmap = true;
 		self.addEventListener(egret.Event.ADDED_TO_STAGE, self.onAddToStage, self);
 	}
 

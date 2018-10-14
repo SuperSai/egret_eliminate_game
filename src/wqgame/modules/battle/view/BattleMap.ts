@@ -75,6 +75,7 @@ class BattleMap extends BaseEuiView {
 		let path: string = PathConfig.MapPath.replace("{0}", icon + "");
 		App.DisplayUtils.addAsyncBitmapToImage(path, mapIcon);
 		mapCon.addChild(mapIcon);
+		mapCon.cacheAsBitmap = true;
 		return mapCon;
 	}
 

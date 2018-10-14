@@ -26,6 +26,7 @@ var BattleController = (function (_super) {
     }
     BattleController.prototype.onBattleInit = function () {
         var self = this;
+        self._battleModel.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
         App.ViewManager.open(ViewConst.Battle);
         self.initRegisterView();
     };

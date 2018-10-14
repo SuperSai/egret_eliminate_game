@@ -20,6 +20,7 @@ var BattleMissionView = (function (_super) {
         self.skinName = SkinName.BattleMissionViewSkin;
         self.setResources(["battleMission"]);
         self._model = self.controller.getModel();
+        self.cacheAsBitmap = true;
         return _this;
     }
     BattleMissionView.prototype.initUI = function () {

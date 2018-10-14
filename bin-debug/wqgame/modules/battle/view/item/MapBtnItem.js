@@ -11,7 +11,9 @@ r.prototype = e.prototype, t.prototype = new r();
 var MapBtnItem = (function (_super) {
     __extends(MapBtnItem, _super);
     function MapBtnItem() {
-        return _super.call(this, SkinName.MapBtnItemSkin) || this;
+        var _this = _super.call(this, SkinName.MapBtnItemSkin) || this;
+        _this.cacheAsBitmap = true;
+        return _this;
     }
     MapBtnItem.prototype.onAwake = function ($data) {
         _super.prototype.onAwake.call(this, $data);

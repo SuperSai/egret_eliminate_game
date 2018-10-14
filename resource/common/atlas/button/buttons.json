@@ -1,6 +1,0 @@
-{"file":"buttons.png","frames":{
-"btn_add":{"x":152,"y":74,"w":45,"h":44,"offX":0,"offY":0,"sourceW":45,"sourceH":44},
-"btn_blue":{"x":0,"y":122,"w":150,"h":59,"offX":0,"offY":0,"sourceW":150,"sourceH":59},
-"btn_close":{"x":152,"y":0,"w":71,"h":72,"offX":0,"offY":0,"sourceW":71,"sourceH":72},
-"btn_red":{"x":0,"y":61,"w":150,"h":59,"offX":0,"offY":0,"sourceW":150,"sourceH":59},
-"btn_violet":{"x":0,"y":0,"w":150,"h":59,"offX":0,"offY":0,"sourceW":150,"sourceH":59}}}

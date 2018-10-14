@@ -12,6 +12,10 @@
             {
                 "configPath": "resource/cn/config/game_ui.res.json",
                 "relativePath": "resource/"
+            },
+            {
+                "configPath": "resource/common/atlas/comRes.json",
+                "relativePath": "resource/"
             }
         ]
     },

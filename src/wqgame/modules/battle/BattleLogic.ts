@@ -23,20 +23,21 @@ class BattleLogic {
 	}
 
 	/** 创建格子和格子之间的线 */
-	public static createPointLine(pointLine: eui.Image, linePanel: egret.Sprite, pos: egret.Point) {
-		if (pointLine) {
-			if (pointLine.parent) {
-				App.DisplayUtils.removeFromParent(pointLine);
+	public static createPointLine($pointLine: eui.Image, linePanel: egret.Sprite, pos: egret.Point) {
+		if ($pointLine) {
+			if ($pointLine.parent) {
+				App.DisplayUtils.removeFromParent($pointLine);
 			}
 		}
-		pointLine = ObjectPool.pop(eui.Image, "eui.Image");
-		pointLine.texture = RES.getRes("line_png");
-		pointLine.width = 0;
-		pointLine.anchorOffsetX = 0;
-		pointLine.anchorOffsetY = pointLine.height / 2;
-		pointLine.x = pos.x;
-		pointLine.y = pos.y;
-		linePanel.addChild(pointLine);
+		$pointLine = ObjectPool.pop(eui.Image, "eui.Image");
+		$pointLine.texture = RES.getRes("line_png");
+		$pointLine.alpha = 1;
+		$pointLine.width = 0;
+		$pointLine.anchorOffsetX = 0;
+		$pointLine.anchorOffsetY = $pointLine.height / 2;
+		$pointLine.x = pos.x;
+		$pointLine.y = pos.y;
+		linePanel.addChild($pointLine);
 	}
 
 	public static deleteClearList() {
@@ -96,7 +97,7 @@ class BattleLogic {
 			}, this, [dirty]);
 	}
 
-	public static doTouchBegan(pointLine: eui.Image, linePanel: egret.Sprite, $grid: Grid, x: number, y: number): void {
+	public static doTouchBegan($pointLine: eui.Image, linePanel: egret.Sprite, $grid: Grid, x: number, y: number): void {
 		BattleLogic.deleteClearList();
 		let grid: Grid = App.GridManager.getTouchGrid(x, y);
 		if (grid) {
@@ -105,7 +106,7 @@ class BattleLogic {
 			Log.trace("row: " + grid.row + ", column: " + grid.column);
 			//提示线
 			let point = ObjectPool.pop(egret.Point, "egret.Point", grid.x, grid.y);// new egret.Point(grid.x, grid.y);
-			BattleLogic.createPointLine(pointLine, linePanel, point);
+			BattleLogic.createPointLine($pointLine, linePanel, point);
 			$grid = grid;
 			ObjectPool.push(point);
 		}
@@ -168,7 +169,8 @@ class BattleLogic {
 
 	private static drawLine(linePanel: egret.Sprite, fromGrid: Grid, toGrid: Grid) {
 		let lineTexture = RES.getRes("battleMission_line");
-		let line = ObjectPool.pop(eui.Image, "eui.Image");
+		let line: eui.Image = ObjectPool.pop(eui.Image, "eui.Image");
+		line.alpha = 1;
 		line.texture = lineTexture;
 		line.anchorOffsetX = 0;
 		line.anchorOffsetY = lineTexture.textureHeight / 2;

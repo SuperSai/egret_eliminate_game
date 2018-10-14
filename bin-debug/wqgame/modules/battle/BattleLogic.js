@@ -23,20 +23,21 @@ var BattleLogic = (function () {
         return grid;
     };
     /** 创建格子和格子之间的线 */
-    BattleLogic.createPointLine = function (pointLine, linePanel, pos) {
-        if (pointLine) {
-            if (pointLine.parent) {
-                App.DisplayUtils.removeFromParent(pointLine);
+    BattleLogic.createPointLine = function ($pointLine, linePanel, pos) {
+        if ($pointLine) {
+            if ($pointLine.parent) {
+                App.DisplayUtils.removeFromParent($pointLine);
             }
         }
-        pointLine = ObjectPool.pop(eui.Image, "eui.Image");
-        pointLine.texture = RES.getRes("line_png");
-        pointLine.width = 0;
-        pointLine.anchorOffsetX = 0;
-        pointLine.anchorOffsetY = pointLine.height / 2;
-        pointLine.x = pos.x;
-        pointLine.y = pos.y;
-        linePanel.addChild(pointLine);
+        $pointLine = ObjectPool.pop(eui.Image, "eui.Image");
+        $pointLine.texture = RES.getRes("line_png");
+        $pointLine.alpha = 1;
+        $pointLine.width = 0;
+        $pointLine.anchorOffsetX = 0;
+        $pointLine.anchorOffsetY = $pointLine.height / 2;
+        $pointLine.x = pos.x;
+        $pointLine.y = pos.y;
+        linePanel.addChild($pointLine);
     };
     BattleLogic.deleteClearList = function () {
         App.GridManager.clearList = [];
@@ -72,7 +73,7 @@ var BattleLogic = (function () {
     };
     BattleLogic.createDirty = function (gridPanel, $grid) {
         // 痕迹
-        var dirty = new eui.Image("battle_icon_" + $grid.id);
+        var dirty = ObjectPool.pop(eui.Image, "eui.Image", "battle_icon_" + $grid.id); // new eui.Image("battle_icon_" + $grid.id);
         var texture = RES.getRes("battle_icon_" + $grid.id);
         dirty.anchorOffsetX = texture.textureWidth / 2;
         dirty.anchorOffsetY = texture.textureHeight / 2;
@@ -87,12 +88,11 @@ var BattleLogic = (function () {
             .wait(200)
             .to({ alpha: 0 }, 100)
             .call(function (node) {
-            if (node && node.parent) {
-                node.parent.removeChild(node);
-            }
+            egret.Tween.removeTweens(node);
+            App.DisplayUtils.removeFromParent(node);
         }, this, [dirty]);
     };
-    BattleLogic.doTouchBegan = function (pointLine, linePanel, $grid, x, y) {
+    BattleLogic.doTouchBegan = function ($pointLine, linePanel, $grid, x, y) {
         BattleLogic.deleteClearList();
         var grid = App.GridManager.getTouchGrid(x, y);
         if (grid) {
@@ -100,9 +100,10 @@ var BattleLogic = (function () {
             BattleLogic.pushClearGrid(grid, linePanel);
             Log.trace("row: " + grid.row + ", column: " + grid.column);
             //提示线
-            var point = new egret.Point(grid.x, grid.y);
-            BattleLogic.createPointLine(pointLine, linePanel, point);
+            var point = ObjectPool.pop(egret.Point, "egret.Point", grid.x, grid.y); // new egret.Point(grid.x, grid.y);
+            BattleLogic.createPointLine($pointLine, linePanel, point);
             $grid = grid;
+            ObjectPool.push(point);
         }
     };
     BattleLogic.doTouchMove = function (pointLine, linePanel, $grid, x, y) {
@@ -161,6 +162,7 @@ var BattleLogic = (function () {
     BattleLogic.drawLine = function (linePanel, fromGrid, toGrid) {
         var lineTexture = RES.getRes("battleMission_line");
         var line = ObjectPool.pop(eui.Image, "eui.Image");
+        line.alpha = 1;
         line.texture = lineTexture;
         line.anchorOffsetX = 0;
         line.anchorOffsetY = lineTexture.textureHeight / 2;

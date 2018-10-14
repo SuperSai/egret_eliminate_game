@@ -80,6 +80,7 @@ var BattleMap = (function (_super) {
         var path = PathConfig.MapPath.replace("{0}", icon + "");
         App.DisplayUtils.addAsyncBitmapToImage(path, mapIcon);
         mapCon.addChild(mapIcon);
+        mapCon.cacheAsBitmap = true;
         return mapCon;
     };
     BattleMap.prototype.addEvents = function () {

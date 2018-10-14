@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="BattlePausePanelSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group horizontalCenter="0" verticalCenter="0">
-		<e:Image source="frames_json.frame_bg_02" y="0"/>
-		<e:Image source="frames_json.frame_04" horizontalCenter="0" top="-30"/>
+		<e:Image source="comRes.frame_bg_02" y="0"/>
+		<e:Image source="comRes.frame_04" horizontalCenter="0" top="-30"/>
 		<e:Group id="btn_exit" name="btn_exit_1#1" touchChildren="false" right="56" bottom="40">
-			<e:Image y="0" x="0" source="buttons_json.btn_red"/>
+			<e:Image y="0" x="0" source="comRes.btn_red"/>
 			<e:Label text="退出" bold="true" size="30" textAlign="center" fontFamily="Microsoft YaHei" horizontalCenter="0" verticalCenter="0"/>
 		</e:Group>
 		<e:Group id="btn_cancel" name="btn_cancel_1#1" touchChildren="false" left="62" bottom="40">
-			<e:Image y="0" x="0" source="buttons_json.btn_blue"/>
+			<e:Image y="0" x="0" source="comRes.btn_blue"/>
 			<e:Label text="取消" bold="true" size="30" textAlign="center" fontFamily="Microsoft YaHei" horizontalCenter="0" verticalCenter="0"/>
 		</e:Group>
 		<e:Label text="提示" fontFamily="Microsoft YaHei" bold="true" textAlign="center" size="50" horizontalCenter="0" top="-14"/>

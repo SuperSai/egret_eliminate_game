@@ -4,15 +4,17 @@
 		<e:Image source="gameOver_json.gameOver_bg" horizontalCenter="0" verticalCenter="16"/>
 		<e:Image source="gameOver_json.gameOver_bg_02" y="525.02" horizontalCenter="0"/>
 		<e:Image source="gameOver_json.gameOver_title_bg" horizontalCenter="0" top="0"/>
+
+
+		<e:Image source="gameOver_json.gameOver_win" horizontalCenter="0" top="22"/>
+		<e:Label id="txt_mission" text="第1关" fontFamily="Microsoft YaHei" bold="true" textAlign="center" horizontalCenter="0" verticalCenter="87.5"/>
 		<e:Group id="btn_next" name="btn_next_1#1" touchChildren="false" y="617.67" right="25">
-			<e:Image y="0" x="0" source="buttons_json.btn_red"/>
+			<e:Image y="0" x="0" source="comRes.btn_red"/>
 			<e:Label text="下一关" bold="true" size="30" textAlign="center" fontFamily="Microsoft YaHei" horizontalCenter="0" verticalCenter="0"/>
 		</e:Group>
 		<e:Group id="btn_exit" name="btn_exit_1#1" touchChildren="false" left="25" x="10" y="617.67" width="150">
-			<e:Image y="0" x="0" source="buttons_json.btn_blue"/>
+			<e:Image y="0" x="0" source="comRes.btn_blue"/>
 			<e:Label text="退出" bold="true" size="30" textAlign="center" fontFamily="Microsoft YaHei" horizontalCenter="0" verticalCenter="0"/>
 		</e:Group>
-		<e:Image source="gameOver_json.gameOver_win" horizontalCenter="0" top="22"/>
-		<e:Label id="txt_mission" text="第1关" fontFamily="Microsoft YaHei" bold="true" textAlign="center" horizontalCenter="0" verticalCenter="87.5"/>
 	</e:Group>
 </e:Skin>

@@ -17,6 +17,7 @@ var LoginView = (function (_super) {
         var _this = _super.call(this, $controller, $layer) || this;
         _this.skinName = SkinName.LoginViewSkin;
         _this.setResources(["login"]);
+        _this.cacheAsBitmap = true;
         return _this;
     }
     /** 对面板进行显示初始化，用于子类继承 */
@@ -28,54 +29,59 @@ var LoginView = (function (_super) {
     LoginView.prototype.initData = function () {
         _super.prototype.initData.call(this);
         var self = this;
-        var vertexSrc = "attribute vec2 aVertexPosition;\n" +
-            "attribute vec2 aTextureCoord;\n" +
-            "attribute vec2 aColor;\n" +
-            "uniform vec2 projectionVector;\n" +
-            "varying vec2 vTextureCoord;\n" +
-            "varying vec4 vColor;\n" +
-            "const vec2 center = vec2(-1.0, 1.0);\n" +
-            "void main(void) {\n" +
-            "   gl_Position = vec4( (aVertexPosition / projectionVector) + center , 0.0, 1.0);\n" +
-            "   vTextureCoord = aTextureCoord;\n" +
-            "   vColor = vec4(aColor.x, aColor.x, aColor.x, aColor.x);\n" +
-            "}";
-        var fragmentSrc3 = [
-            "precision lowp float;\n" +
-                "varying vec2 vTextureCoord;",
-            "varying vec4 vColor;\n",
-            "uniform sampler2D uSampler;",
-            "uniform vec2 center;",
-            "uniform vec3 params;",
-            "uniform float time;",
-            "void main()",
-            "{",
-            "vec2 uv = vTextureCoord.xy;",
-            "vec2 texCoord = uv;",
-            "float dist = distance(uv, center);",
-            "if ( (dist <= (time + params.z)) && (dist >= (time - params.z)) )",
-            "{",
-            "float diff = (dist - time);",
-            "float powDiff = 1.0 - pow(abs(diff*params.x), params.y);",
-            "float diffTime = diff  * powDiff;",
-            "vec2 diffUV = normalize(uv - center);",
-            "texCoord = uv + (diffUV * diffTime);",
-            "}",
-            "gl_FragColor = texture2D(uSampler, texCoord);",
-            "}"
-        ].join("\n");
-        var customFilter3 = new egret.CustomFilter(vertexSrc, fragmentSrc3, {
-            center: { x: 0.5, y: 0.5 },
-            params: { x: 10, y: 0.8, z: 0.1 },
-            time: 0
-        });
-        App.TimerManager.doFrame(0, 0, function () {
-            customFilter3.uniforms.time += 0.01;
-            if (customFilter3.uniforms.time > 1) {
-                customFilter3.uniforms.time = 0.0;
-            }
-        }, self);
-        self.bgImg.filters = [customFilter3];
+        // let vertexSrc =
+        // 	"attribute vec2 aVertexPosition;\n" +
+        // 	"attribute vec2 aTextureCoord;\n" +
+        // 	"attribute vec2 aColor;\n" +
+        // 	"uniform vec2 projectionVector;\n" +
+        // 	"varying vec2 vTextureCoord;\n" +
+        // 	"varying vec4 vColor;\n" +
+        // 	"const vec2 center = vec2(-1.0, 1.0);\n" +
+        // 	"void main(void) {\n" +
+        // 	"   gl_Position = vec4( (aVertexPosition / projectionVector) + center , 0.0, 1.0);\n" +
+        // 	"   vTextureCoord = aTextureCoord;\n" +
+        // 	"   vColor = vec4(aColor.x, aColor.x, aColor.x, aColor.x);\n" +
+        // 	"}";
+        // let fragmentSrc3 = [
+        // 	"precision lowp float;\n" +
+        // 	"varying vec2 vTextureCoord;",
+        // 	"varying vec4 vColor;\n",
+        // 	"uniform sampler2D uSampler;",
+        // 	"uniform vec2 center;",
+        // 	"uniform vec3 params;", // 10.0, 0.8, 0.1"
+        // 	"uniform float time;",
+        // 	"void main()",
+        // 	"{",
+        // 	"vec2 uv = vTextureCoord.xy;",
+        // 	"vec2 texCoord = uv;",
+        // 	"float dist = distance(uv, center);",
+        // 	"if ( (dist <= (time + params.z)) && (dist >= (time - params.z)) )",
+        // 	"{",
+        // 	"float diff = (dist - time);",
+        // 	"float powDiff = 1.0 - pow(abs(diff*params.x), params.y);",
+        // 	"float diffTime = diff  * powDiff;",
+        // 	"vec2 diffUV = normalize(uv - center);",
+        // 	"texCoord = uv + (diffUV * diffTime);",
+        // 	"}",
+        // 	"gl_FragColor = texture2D(uSampler, texCoord);",
+        // 	"}"
+        // ].join("\n");
+        // let customFilter3 = new egret.CustomFilter(
+        // 	vertexSrc,
+        // 	fragmentSrc3,
+        // 	{
+        // 		center: { x: 0.5, y: 0.5 },
+        // 		params: { x: 10, y: 0.8, z: 0.1 },
+        // 		time: 0
+        // 	}
+        // );
+        // App.TimerManager.doFrame(0, 0, () => {
+        // 	customFilter3.uniforms.time += 0.01;
+        // 	if (customFilter3.uniforms.time > 1) {
+        // 		customFilter3.uniforms.time = 0.0;
+        // 	}
+        // }, self);
+        // self.bgImg.filters = [customFilter3];
     };
     /** 面板开启执行函数，用于子类继承 */
     LoginView.prototype.open = function () {
@@ -88,9 +94,9 @@ var LoginView = (function (_super) {
     LoginView.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
         var self = this;
-        self.btn_random.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onRandomName, self);
+        // self.btn_random.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onRandomName, self);
         self.btn_enter.addEventListener(egret.TouchEvent.TOUCH_TAP, self.onLogin, self);
-        self.setBtnEffect(["btn_random", "btn_enter"]);
+        // self.setBtnEffect(["btn_random", "btn_enter"]);
     };
     LoginView.prototype.removeEvents = function () {
         _super.prototype.removeEvents.call(this);

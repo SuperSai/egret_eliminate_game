@@ -331,7 +331,7 @@ window.skins={};
 		var t = new eui.Image();
 		t.scaleX = 0.8;
 		t.scaleY = 0.8;
-		t.source = "frames_json.frame_currency";
+		t.source = "comRes.frame_currency";
 		return t;
 	};
 	_proto.txt_golds_i = function () {
@@ -358,7 +358,7 @@ window.skins={};
 		var t = new eui.Image();
 		t.scaleX = 0.8;
 		t.scaleY = 0.8;
-		t.source = "frames_json.frame_currency";
+		t.source = "comRes.frame_currency";
 		return t;
 	};
 	_proto.txt_diamonds_i = function () {
@@ -539,7 +539,7 @@ window.skins={};
 	};
 	_proto._Image2_i = function () {
 		var t = new eui.Image();
-		t.source = "buttons_json.btn_red";
+		t.source = "comRes.btn_red";
 		t.x = 0;
 		t.y = 0;
 		return t;
@@ -567,7 +567,7 @@ window.skins={};
 	};
 	_proto._Image3_i = function () {
 		var t = new eui.Image();
-		t.source = "buttons_json.btn_blue";
+		t.source = "comRes.btn_blue";
 		t.x = 0;
 		t.y = 0;
 		return t;

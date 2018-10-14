@@ -38,7 +38,7 @@ var BattleModel = (function (_super) {
     BattleModel.prototype.init = function () {
         var self = this;
         self.mapItemDic = new TSDictionary();
-        self.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
+        // self.maxMapCount = parseInt(GlobleVOData.getDataByFilter(GlobleVOData.ServerConfigVO, "id", "MAX_MAP_COUNT")[0].value);
     };
     BattleModel.prototype.initMissionData = function (mission) {
         var self = this;

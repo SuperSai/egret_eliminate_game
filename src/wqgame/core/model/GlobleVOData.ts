@@ -4,18 +4,19 @@
 class GlobleVOData extends egret.DisplayObject {
 
 	private _hasParasComplete: boolean = false;
-	private _totalStepCsvList: TSDictionary<string, any> = new TSDictionary<string, any>();
+	private _totalStepCsvList: TSDictionary<string, any>;
 	private _needParseCount: number = 0;
 	private _currParseCount: number = 0;
 	private _csvZipData: JSZip;
-	private static AllCacheData: TSDictionary<string, TSDictionary<number, any>> = new TSDictionary<string, TSDictionary<number, any>>();
-
+	private static AllCacheData: TSDictionary<string, TSDictionary<number, any>>;
 	public get hasParasComplete(): boolean {
 		return this._hasParasComplete;
 	}
 
 	public setup(): void {
 		let self = this;
+		self._totalStepCsvList = new TSDictionary<string, any>();
+		GlobleVOData.AllCacheData = new TSDictionary<string, TSDictionary<number, any>>();
 		self.initModel();
 		self.initStep();
 	}
