@@ -12,4 +12,3 @@ var ViewConst;
     ViewConst[ViewConst["BattlePausePanel"] = 20005] = "BattlePausePanel";
     /***************** 战斗相关 end *****************/
 })(ViewConst || (ViewConst = {}));
-//# sourceMappingURL=ViewConst.js.map

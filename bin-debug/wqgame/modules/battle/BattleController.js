@@ -54,4 +54,3 @@ var BattleController = (function (_super) {
     return BattleController;
 }(BaseController));
 __reflect(BattleController.prototype, "BattleController");
-//# sourceMappingURL=BattleController.js.map

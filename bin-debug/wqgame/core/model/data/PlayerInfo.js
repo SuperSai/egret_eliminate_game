@@ -24,4 +24,3 @@ var PlayerInfo = (function () {
     return PlayerInfo;
 }());
 __reflect(PlayerInfo.prototype, "PlayerInfo");
-//# sourceMappingURL=PlayerInfo.js.map

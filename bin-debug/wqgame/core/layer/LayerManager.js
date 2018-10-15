@@ -107,4 +107,3 @@ var LayerManager = (function (_super) {
     return LayerManager;
 }(BaseClass));
 __reflect(LayerManager.prototype, "LayerManager");
-//# sourceMappingURL=LayerManager.js.map

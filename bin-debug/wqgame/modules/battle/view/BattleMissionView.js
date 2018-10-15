@@ -44,6 +44,8 @@ var BattleMissionView = (function (_super) {
         for (var i = 0; i < App.GridManager.row; i++) {
             for (var j = 0; j < App.GridManager.column; j++) {
                 var id = App.GridManager.genInitGridId(i, j);
+                if (id == -1)
+                    continue;
                 var cell = BattleLogic.createGrid(this._gridPanel, i, j, id);
                 cell.x = App.GridManager.getGridPosX(j);
                 cell.y = App.GridManager.getGridPosY(i);
@@ -55,7 +57,7 @@ var BattleMissionView = (function (_super) {
         if (self._gridPanel) {
             App.DisplayUtils.removeAllChildren(self._gridPanel);
         }
-        self._gridPanel = new egret.Sprite();
+        self._gridPanel = ObjectPool.pop(egret.Sprite, "egret.Sprite");
         self._gridPanel.width = App.GridManager.column * Grid.Width + (App.GridManager.column - 1) * App.GridManager.columnSpace;
         self._gridPanel.height = App.GridManager.row * Grid.Height + (App.GridManager.row - 1) * App.GridManager.rowSpace;
         self._gridPanel.anchorOffsetX = self._gridPanel.width / 2;
@@ -76,7 +78,7 @@ var BattleMissionView = (function (_super) {
         if (self._linePanel) {
             App.DisplayUtils.removeAllChildren(self._linePanel);
         }
-        self._linePanel = new egret.Sprite();
+        self._linePanel = ObjectPool.pop(egret.Sprite, "egret.Sprite");
         self._linePanel.width = App.GridManager.column * Grid.Width + (App.GridManager.column - 1) * App.GridManager.columnSpace;
         self._linePanel.height = App.GridManager.row * Grid.Height + (App.GridManager.row - 1) * App.GridManager.rowSpace;
         self._linePanel.anchorOffsetX = self._linePanel.width / 2;
@@ -223,4 +225,3 @@ var BattleMissionView = (function (_super) {
     return BattleMissionView;
 }(BaseEuiView));
 __reflect(BattleMissionView.prototype, "BattleMissionView");
-//# sourceMappingURL=BattleMissionView.js.map

@@ -105,4 +105,3 @@ var BattleMap = (function (_super) {
     return BattleMap;
 }(BaseEuiView));
 __reflect(BattleMap.prototype, "BattleMap");
-//# sourceMappingURL=BattleMap.js.map

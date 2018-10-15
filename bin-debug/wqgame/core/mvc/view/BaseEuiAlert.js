@@ -92,4 +92,3 @@ var BaseEuiAlert = (function (_super) {
     return BaseEuiAlert;
 }(BaseEuiView));
 __reflect(BaseEuiAlert.prototype, "BaseEuiAlert");
-//# sourceMappingURL=BaseEuiAlert.js.map

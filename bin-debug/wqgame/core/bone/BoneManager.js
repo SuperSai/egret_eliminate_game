@@ -53,4 +53,3 @@ var BoneManager = (function (_super) {
     return BoneManager;
 }(BaseClass));
 __reflect(BoneManager.prototype, "BoneManager");
-//# sourceMappingURL=BoneManager.js.map

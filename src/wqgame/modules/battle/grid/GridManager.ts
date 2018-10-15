@@ -26,13 +26,8 @@ class GridManager extends BaseClass {
 	}
 
 	public genDropGridId(row: number, column: number) {
-		// 思路是:假设该位置有id, 从该位置出发可以得到相同id的数量
-		// 棋盘现阶段拥有可以消除id的数量
 		// 利用这个控制难度
-		let idArr = [1, 2, 3, 4, 5];
-		let n = Math.random() * idArr.length;
-		let i = Math.floor(n);
-		return idArr[i];
+		return Math.floor(App.MathUtils.Range(0, 6));
 	}
 
 	public genInitGridId(row: number, column: number) {
@@ -278,6 +273,8 @@ class GridManager extends BaseClass {
 		let retArr: any[] = [];
 		for (let i = self.row - 1; i >= 0; i--) {
 			for (let j = 0; j < self.column; j++) {
+				let id = App.GridManager.genInitGridId(i, j);
+				if (id == -1) continue;
 				let item: Grid = self.gridArray[i][j];
 				if (item == null) {
 					let p = { row: i, column: j };
@@ -295,6 +292,8 @@ class GridManager extends BaseClass {
 		let ret: any = { row: row, column: column };
 		row++;
 		while (row < self.row) {
+			let id = App.GridManager.genInitGridId(row, column);
+			if (id == -1) break;
 			let item = self.gridArray[row][column];
 			if (item == null) {
 				ret.row++;

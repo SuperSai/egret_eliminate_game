@@ -45,4 +45,3 @@ var MissionPanel = (function (_super) {
     return MissionPanel;
 }(BaseEuiAlert));
 __reflect(MissionPanel.prototype, "MissionPanel");
-//# sourceMappingURL=MissionPanel.js.map

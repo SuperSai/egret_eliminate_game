@@ -60,4 +60,3 @@ var HallView = (function (_super) {
     return HallView;
 }(BaseEuiView));
 __reflect(HallView.prototype, "HallView");
-//# sourceMappingURL=HallView.js.map

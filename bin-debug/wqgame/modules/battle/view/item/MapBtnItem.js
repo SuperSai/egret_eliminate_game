@@ -73,4 +73,3 @@ var MapBtnItem = (function (_super) {
     return MapBtnItem;
 }(BaseEuiItem));
 __reflect(MapBtnItem.prototype, "MapBtnItem");
-//# sourceMappingURL=MapBtnItem.js.map

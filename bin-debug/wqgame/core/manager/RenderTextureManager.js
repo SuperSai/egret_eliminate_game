@@ -86,4 +86,3 @@ var RenderTextureManager = (function (_super) {
     return RenderTextureManager;
 }(BaseClass));
 __reflect(RenderTextureManager.prototype, "RenderTextureManager");
-//# sourceMappingURL=RenderTextureManager.js.map

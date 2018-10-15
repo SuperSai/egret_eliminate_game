@@ -44,4 +44,3 @@ var BattlePausePanel = (function (_super) {
     return BattlePausePanel;
 }(BaseEuiAlert));
 __reflect(BattlePausePanel.prototype, "BattlePausePanel");
-//# sourceMappingURL=BattlePausePanel.js.map

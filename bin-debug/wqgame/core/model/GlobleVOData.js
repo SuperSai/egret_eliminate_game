@@ -125,4 +125,3 @@ var GlobleVOData = (function (_super) {
     return GlobleVOData;
 }(egret.DisplayObject));
 __reflect(GlobleVOData.prototype, "GlobleVOData");
-//# sourceMappingURL=GlobleVOData.js.map

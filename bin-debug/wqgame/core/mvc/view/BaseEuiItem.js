@@ -53,4 +53,3 @@ var BaseEuiItem = (function (_super) {
     return BaseEuiItem;
 }(eui.ItemRenderer));
 __reflect(BaseEuiItem.prototype, "BaseEuiItem");
-//# sourceMappingURL=BaseEuiItem.js.map

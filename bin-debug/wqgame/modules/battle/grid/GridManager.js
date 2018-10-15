@@ -33,13 +33,8 @@ var GridManager = (function (_super) {
         }
     };
     GridManager.prototype.genDropGridId = function (row, column) {
-        // 思路是:假设该位置有id, 从该位置出发可以得到相同id的数量
-        // 棋盘现阶段拥有可以消除id的数量
         // 利用这个控制难度
-        var idArr = [1, 2, 3, 4, 5];
-        var n = Math.random() * idArr.length;
-        var i = Math.floor(n);
-        return idArr[i];
+        return Math.floor(App.MathUtils.Range(0, 6));
     };
     GridManager.prototype.genInitGridId = function (row, column) {
         var json = RES.getRes("gameGrids");
@@ -267,6 +262,9 @@ var GridManager = (function (_super) {
         var retArr = [];
         for (var i = self.row - 1; i >= 0; i--) {
             for (var j = 0; j < self.column; j++) {
+                var id = App.GridManager.genInitGridId(i, j);
+                if (id == -1)
+                    continue;
                 var item = self.gridArray[i][j];
                 if (item == null) {
                     var p = { row: i, column: j };
@@ -283,6 +281,9 @@ var GridManager = (function (_super) {
         var ret = { row: row, column: column };
         row++;
         while (row < self.row) {
+            var id = App.GridManager.genInitGridId(row, column);
+            if (id == -1)
+                break;
             var item = self.gridArray[row][column];
             if (item == null) {
                 ret.row++;
@@ -297,4 +298,3 @@ var GridManager = (function (_super) {
     return GridManager;
 }(BaseClass));
 __reflect(GridManager.prototype, "GridManager");
-//# sourceMappingURL=GridManager.js.map

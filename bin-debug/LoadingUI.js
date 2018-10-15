@@ -53,6 +53,7 @@ var LoadingUI = (function (_super) {
         this.Bg.width = this.width;
         this.Bg.height = this.height;
         this.addChild(this.Bg);
+        this.Bg.cacheAsBitmap = true;
         //文本
         this.textField = new egret.TextField();
         this.addChild(this.textField);
@@ -70,4 +71,3 @@ var LoadingUI = (function (_super) {
     return LoadingUI;
 }(egret.Sprite));
 __reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
-//# sourceMappingURL=LoadingUI.js.map

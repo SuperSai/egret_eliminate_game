@@ -183,4 +183,3 @@ var BattleLogic = (function () {
     return BattleLogic;
 }());
 __reflect(BattleLogic.prototype, "BattleLogic");
-//# sourceMappingURL=BattleLogic.js.map
