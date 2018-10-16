@@ -72,3 +72,4 @@ var SceneManager = (function (_super) {
     return SceneManager;
 }(BaseClass));
 __reflect(SceneManager.prototype, "SceneManager");
+//# sourceMappingURL=SceneManager.js.map

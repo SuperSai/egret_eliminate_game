@@ -18,7 +18,6 @@ var RegisterManager = (function (_super) {
     }
     /** 初始化场景 */
     RegisterManager.prototype.initScene = function () {
-        App.SceneManager.register(SceneConsts.LOADING, new LoadingScene());
         App.SceneManager.register(SceneConsts.LOGIN, new LoginScene());
         App.SceneManager.register(SceneConsts.HALL, new HallScene());
         App.SceneManager.register(SceneConsts.BATTLE, new BattleScene());
@@ -27,7 +26,6 @@ var RegisterManager = (function (_super) {
      * 初始化所有模块控制器
      */
     RegisterManager.prototype.initModules = function () {
-        App.ControllerManager.register(ControllerConst.Loading, new LoadingController());
         App.ControllerManager.register(ControllerConst.Login, new LoginController());
         App.ControllerManager.register(ControllerConst.Hall, new HallController());
         App.ControllerManager.register(ControllerConst.Battle, new BattleController());
@@ -35,3 +33,4 @@ var RegisterManager = (function (_super) {
     return RegisterManager;
 }(BaseClass));
 __reflect(RegisterManager.prototype, "RegisterManager");
+//# sourceMappingURL=RegisterManager.js.map

@@ -34,3 +34,4 @@ var PlayerInfoManager = (function (_super) {
     return PlayerInfoManager;
 }(BaseClass));
 __reflect(PlayerInfoManager.prototype, "PlayerInfoManager");
+//# sourceMappingURL=PlayerInfoManager.js.map

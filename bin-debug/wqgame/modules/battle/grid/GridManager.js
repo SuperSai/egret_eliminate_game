@@ -34,7 +34,7 @@ var GridManager = (function (_super) {
     };
     GridManager.prototype.genDropGridId = function (row, column) {
         // 利用这个控制难度
-        return Math.floor(App.MathUtils.Range(0, 6));
+        return Math.floor(App.MathUtils.Range(0, 4));
     };
     GridManager.prototype.genInitGridId = function (row, column) {
         var json = RES.getRes("gameGrids");
@@ -298,3 +298,4 @@ var GridManager = (function (_super) {
     return GridManager;
 }(BaseClass));
 __reflect(GridManager.prototype, "GridManager");
+//# sourceMappingURL=GridManager.js.map

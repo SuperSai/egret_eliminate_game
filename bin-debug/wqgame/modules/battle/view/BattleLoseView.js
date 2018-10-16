@@ -59,3 +59,4 @@ var BattleLoseView = (function (_super) {
     return BattleLoseView;
 }(BaseEuiAlert));
 __reflect(BattleLoseView.prototype, "BattleLoseView");
+//# sourceMappingURL=BattleLoseView.js.map

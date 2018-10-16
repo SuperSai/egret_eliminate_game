@@ -4,7 +4,6 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 var SkinName = (function () {
     function SkinName() {
     }
-    SkinName.LoadingUISkin = "resource/skins/loading/LoadingUISkin.exml";
     SkinName.LoginViewSkin = "resource/skins/login/LoginViewSkin.exml";
     SkinName.CurrencyComSkin = "resource/skins/common/component/CurrencyComSkin.exml";
     SkinName.HallViewSkin = "resource/skins/hall/HallViewSkin.exml";
@@ -20,3 +19,4 @@ var SkinName = (function () {
     return SkinName;
 }());
 __reflect(SkinName.prototype, "SkinName");
+//# sourceMappingURL=SkinName.js.map

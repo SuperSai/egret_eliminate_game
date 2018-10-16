@@ -18,3 +18,4 @@ var MapVO = (function () {
     return MapVO;
 }());
 __reflect(MapVO.prototype, "MapVO");
+//# sourceMappingURL=MapVO.js.map

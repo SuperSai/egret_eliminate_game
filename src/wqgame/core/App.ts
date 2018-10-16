@@ -5,8 +5,6 @@
 class App {
 	/** 请求服务器使用的用户标识 */
 	public static ProxyUserFlag: string = "";
-	/** 全局配置数据 */
-	public static GlobalData: any = null;
 
 	/** Http请求 */
 	public static get Http(): Http {
@@ -101,8 +99,8 @@ class App {
 		return MessageCenter.Instance(0);
 	}
 	/** 通用Loading动画 */
-	public static get GameLoading(): GameLoading {
-		return GameLoading.Instance();
+	public static get SmallLoading(): SmallLoading {
+		return SmallLoading.Instance();
 	}
 	/** 显示对象工具类 */
 	public static get DisplayUtils(): DisplayUtils {
@@ -156,10 +154,8 @@ class App {
 
 	/** 初始化函数 */
 	public static Init(): void {
-		//全局配置数据
-		App.GlobalData = RES.getRes("global");
 		//开启调试
-		App.DebugUtils.isOpen(App.GlobalData.IsDebug);
+		App.DebugUtils.isOpen(ext.getIsDebug());
 		App.DebugUtils.setThreshold(5);
 		//扩展功能初始化
 		App.EgretExpandUtils.init();

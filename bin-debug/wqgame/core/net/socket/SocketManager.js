@@ -64,3 +64,4 @@ var SocketManager = (function (_super) {
     return SocketManager;
 }(BaseClass));
 __reflect(SocketManager.prototype, "SocketManager");
+//# sourceMappingURL=SocketManager.js.map

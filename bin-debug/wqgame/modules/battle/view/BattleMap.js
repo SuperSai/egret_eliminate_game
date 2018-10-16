@@ -59,6 +59,13 @@ var BattleMap = (function (_super) {
             self._model.mapItemDic.Add(parseInt(levelItem.txt_index.text), levelItem);
             mapCon.addChild(levelItem);
         }
+        for (var k = 1; k < mapCon.$children.length; k++) {
+            var item = mapCon.getChildAt(k);
+            if (item.headImg.visible) {
+                mapCon.setChildIndex(item, mapCon.numChildren);
+                break;
+            }
+        }
     };
     /** 添加新地图 */
     BattleMap.prototype.addMap = function () {
@@ -80,7 +87,6 @@ var BattleMap = (function (_super) {
         var path = PathConfig.MapPath.replace("{0}", icon + "");
         App.DisplayUtils.addAsyncBitmapToImage(path, mapIcon);
         mapCon.addChild(mapIcon);
-        mapCon.cacheAsBitmap = true;
         return mapCon;
     };
     BattleMap.prototype.addEvents = function () {
@@ -105,3 +111,4 @@ var BattleMap = (function (_super) {
     return BattleMap;
 }(BaseEuiView));
 __reflect(BattleMap.prototype, "BattleMap");
+//# sourceMappingURL=BattleMap.js.map

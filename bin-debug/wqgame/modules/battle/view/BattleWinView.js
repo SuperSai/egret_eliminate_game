@@ -30,7 +30,6 @@ var BattleWinView = (function (_super) {
         self._model = param[0];
         self.txt_mission.text = App.LanguageManager.getLanguageText("battle.txt.01", self._model.enterMission);
         App.PlayerInfoManager.Info.saveMission(self._model.enterMission + 1);
-        App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.MAP_ITEM_UPDATE);
     };
     BattleWinView.prototype.addEvents = function () {
         _super.prototype.addEvents.call(this);
@@ -58,6 +57,16 @@ var BattleWinView = (function (_super) {
         App.ViewManager.close(ViewConst.BattleWinPanel);
         App.ViewManager.close(ViewConst.BattleMission);
     };
+    BattleWinView.prototype.close = function () {
+        var param = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            param[_i] = arguments[_i];
+        }
+        _super.prototype.close.call(this, param);
+        var self = this;
+        App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.MAP_ITEM_UPDATE);
+    };
     return BattleWinView;
 }(BaseEuiAlert));
 __reflect(BattleWinView.prototype, "BattleWinView");
+//# sourceMappingURL=BattleWinView.js.map

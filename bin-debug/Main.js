@@ -86,7 +86,9 @@ var Main = (function (_super) {
         //初始化
         self.initLifecycle();
         self.initData();
-        self.initPlatform();
+        ext.loadServerConfig(function () {
+            self.initPlatform();
+        });
     };
     Main.prototype.initLifecycle = function () {
         egret.lifecycle.addLifecycleListener(function (context) { });
@@ -107,16 +109,10 @@ var Main = (function (_super) {
     /** 初始化平台 */
     Main.prototype.initPlatform = function () {
         var self = this;
+        PathConfig.Root = ext.getResourceUrl();
         switch (ext.getPlatform()) {
-            case "wan83":
-                break;
-            case "facebook":
-                break;
-            case "wx":
-                ext.getLogin(function (data, self) {
-                    // PlayerInfoManager.getInstance.nickName = data.data.content;
-                    ext.getUserInfo(self.userInfoBack, self);
-                }, self);
+            case "dev":
+                self.runGame();
                 break;
             default:
                 self.runGame();
@@ -124,14 +120,11 @@ var Main = (function (_super) {
         }
     };
     /** 开始运行游戏 */
-    Main.prototype.runGame = function ($root) {
-        if ($root === void 0) { $root = "resource/"; }
+    Main.prototype.runGame = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        PathConfig.Root = $root;
-                        return [4 /*yield*/, this.loadResource()];
+                    case 0: return [4 /*yield*/, this.loadResource()];
                     case 1:
                         _a.sent();
                         this.createGameScene();
@@ -154,7 +147,7 @@ var Main = (function (_super) {
                         return [4 /*yield*/, RES.loadGroup("loading")];
                     case 2:
                         _a.sent();
-                        loadingView = new LoadingUI();
+                        loadingView = new BigLoading();
                         this.stage.addChild(loadingView);
                         return [4 /*yield*/, this.loadConfigs()];
                     case 3:
@@ -165,7 +158,9 @@ var Main = (function (_super) {
                         return [4 /*yield*/, this.loadCommonGroup(loadingView)];
                     case 5:
                         _a.sent();
+                        loadingView.removeChildren();
                         this.stage.removeChild(loadingView);
+                        loadingView = null;
                         return [3 /*break*/, 7];
                     case 6:
                         e_1 = _a.sent();
@@ -222,9 +217,7 @@ var Main = (function (_super) {
             }, _this);
         });
     };
-    /**
-     * 创建场景界面
-     */
+    /** 创建场景界面 */
     Main.prototype.createGameScene = function () {
         var self = this;
         App.Init();
@@ -240,3 +233,4 @@ var Main = (function (_super) {
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
+//# sourceMappingURL=Main.js.map

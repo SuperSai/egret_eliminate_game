@@ -96,7 +96,7 @@ var ViewManager = (function (_super) {
             view.initData();
         }
         else {
-            App.GameLoading.showLoading();
+            App.SmallLoading.showLoading();
             view.loadResource(function () {
                 view.setVisible(false);
                 view.addToParent();
@@ -106,7 +106,7 @@ var ViewManager = (function (_super) {
                 view.open.apply(view, param);
                 view.initData();
                 view.setVisible(true);
-                App.GameLoading.hideLoading();
+                App.SmallLoading.hideLoading();
             }.bind(this));
         }
         this._opens.push(key);
@@ -190,3 +190,4 @@ var ViewManager = (function (_super) {
     return ViewManager;
 }(BaseClass));
 __reflect(ViewManager.prototype, "ViewManager");
+//# sourceMappingURL=ViewManager.js.map

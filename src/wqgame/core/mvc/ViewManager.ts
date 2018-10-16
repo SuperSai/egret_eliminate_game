@@ -96,7 +96,7 @@ class ViewManager extends BaseClass {
 			view.initData();
 		}
 		else {
-			App.GameLoading.showLoading();
+			App.SmallLoading.showLoading();
 			view.loadResource(function () {
 				view.setVisible(false);
 				view.addToParent();
@@ -106,7 +106,7 @@ class ViewManager extends BaseClass {
 				view.open.apply(view, param);
 				view.initData();
 				view.setVisible(true);
-				App.GameLoading.hideLoading();
+				App.SmallLoading.hideLoading();
 			}.bind(this));
 		}
 

@@ -61,24 +61,31 @@ var BattleView = (function (_super) {
         self.btn_hall.removeEventListener(egret.TouchEvent.TOUCH_TAP, self.onGotoHall, self);
         // self.scroller.removeEventListener(egret.Event.CHANGE, self.onMapChange, self);
     };
-    BattleView.prototype.onMapChange = function () {
-        var self = this;
-        //已经滑动到顶部
-        if (self.scroller.viewport.scrollV == 0) {
-            var maxMission = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
-            if (self._model.mapItemDic.ContainsKey(maxMission)) {
-                if (self._model.mapItemDic.TryGetValue(maxMission).isListener) {
-                    self.map.addMap();
-                    self.scroller.viewport.validateNow();
-                }
-            }
-        }
-    };
+    // private onMapChange(): void {
+    // 	let self = this;
+    // 	//已经滑动到顶部
+    // 	if (self.scroller.viewport.scrollV == 0) {
+    // 		let maxMission: number = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
+    // 		if (self._model.mapItemDic.ContainsKey(maxMission)) {
+    // 			if ((<MapBtnItem>self._model.mapItemDic.TryGetValue(maxMission)).isListener) {
+    // 				self.map.addMap();
+    // 				self.scroller.viewport.validateNow();
+    // 			}
+    // 		}
+    // 	}
+    // }
     /** 更新地图Item数据 */
     BattleView.prototype.onUpdateMapItem = function () {
         var self = this;
-        self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission).initState();
-        self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1).initState();
+        var oldItem = self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1);
+        oldItem.headState(false, function () {
+            oldItem.initState();
+            var newItem = self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission);
+            newItem.parent.setChildIndex(newItem, newItem.parent.numChildren);
+            newItem.headState(true, function () {
+                newItem.initState();
+            });
+        });
         if (self.checkIsEnterNextMap()) {
             self.map.addMap();
             self.scroller.viewport.validateNow();
@@ -89,7 +96,7 @@ var BattleView = (function (_super) {
         var self = this;
         var maxMission = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
         if (self._model.mapItemDic.ContainsKey(maxMission)) {
-            if (self._model.mapItemDic.TryGetValue(maxMission).isListener) {
+            if (self._model.mapItemDic.TryGetValue(maxMission).isPass) {
                 return true;
             }
         }
@@ -102,3 +109,4 @@ var BattleView = (function (_super) {
     return BattleView;
 }(BaseEuiView));
 __reflect(BattleView.prototype, "BattleView");
+//# sourceMappingURL=BattleView.js.map

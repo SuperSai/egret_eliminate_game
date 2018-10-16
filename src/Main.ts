@@ -39,13 +39,17 @@ class Main extends eui.UILayer {
         //初始化
         self.initLifecycle();
         self.initData();
-        self.initPlatform();
+        ext.loadServerConfig(() => {
+            self.initPlatform();
+        });
     }
+
     private initLifecycle(): void {
         egret.lifecycle.addLifecycleListener((context) => { })
         egret.lifecycle.onPause = () => { egret.ticker.pause(); }
         egret.lifecycle.onResume = () => { egret.ticker.resume(); }
     }
+
     /** 初始化数据 */
     private initData(): void {
         let self = this;
@@ -57,42 +61,40 @@ class Main extends eui.UILayer {
         App.StageUtils.setScaleMode(egret.StageScaleMode.FIXED_WIDTH);
         App.LayerManager.setup(App.StageUtils.getStage());
     }
+
     /** 初始化平台 */
     private initPlatform() {
         let self = this;
+        PathConfig.Root = ext.getResourceUrl();
         switch (ext.getPlatform()) {
-            case "wan83":
-                break;
-            case "facebook":
-                break;
-            case "wx":
-                ext.getLogin((data, self) => {
-                    // PlayerInfoManager.getInstance.nickName = data.data.content;
-                    ext.getUserInfo(self.userInfoBack, self);
-                }, self);
+            case "dev":
+                self.runGame();
                 break;
             default:
                 self.runGame();
                 break;
         }
     }
+
     /** 开始运行游戏 */
-    private async runGame($root: string = "resource/") {
-        PathConfig.Root = $root;
+    private async runGame() {
         await this.loadResource();
         this.createGameScene();
     }
+
     /** 加载资源 */
     private async loadResource() {
         try {
             await this.loadGameComConfig();
             await RES.loadGroup("loading");
-            const loadingView = new LoadingUI();
+            let loadingView = new BigLoading();
             this.stage.addChild(loadingView);
             await this.loadConfigs();
             await this.loadTheme();
             await this.loadCommonGroup(loadingView);
+            loadingView.removeChildren();
             this.stage.removeChild(loadingView);
+            loadingView = null;
         }
         catch (e) {
             console.error(e);
@@ -120,6 +122,7 @@ class Main extends eui.UILayer {
             }, this);
         })
     }
+
     /** 加载公共资源组 */
     private loadCommonGroup(loadingView: any) {
         return new Promise((resolve, reject) => {
@@ -128,6 +131,7 @@ class Main extends eui.UILayer {
             }, this, 0, loadingView);
         })
     }
+
     /** 加载皮肤怕配置文件 */
     private loadTheme() {
         return new Promise((resolve, reject) => {
@@ -142,9 +146,8 @@ class Main extends eui.UILayer {
             }, this);
         })
     }
-    /**
-     * 创建场景界面
-     */
+
+    /** 创建场景界面 */
     protected createGameScene(): void {
         let self = this;
         App.Init();

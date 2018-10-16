@@ -3,8 +3,6 @@ enum SceneConsts {
     BATTLE = 1,
     /** 大厅场景 */
     HALL,
-    /** Loading场景 */
-    LOADING,
     /** 登陆场景 */
     LOGIN,
 }

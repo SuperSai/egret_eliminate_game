@@ -79,3 +79,4 @@ var BattleState;
     BattleState[BattleState["DealLogic"] = 0] = "DealLogic";
     BattleState[BattleState["Play"] = 1] = "Play";
 })(BattleState || (BattleState = {}));
+//# sourceMappingURL=BattleModel.js.map

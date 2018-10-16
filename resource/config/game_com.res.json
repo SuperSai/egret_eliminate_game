@@ -5,20 +5,11 @@
 			"name": "common"
 		},
 		{
-			"keys": "global",
-			"name": "global"
-		},
-		{
 			"keys": "loadingBg_jpg,loading_json",
 			"name": "loading"
 		}
 	],
 	"resources": [
-		{
-			"url": "config/global.json",
-			"type": "json",
-			"name": "global"
-		},
 		{
 			"url": "common/atlas/loadingBg.jpg",
 			"type": "image",

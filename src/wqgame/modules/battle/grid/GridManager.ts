@@ -27,7 +27,7 @@ class GridManager extends BaseClass {
 
 	public genDropGridId(row: number, column: number) {
 		// 利用这个控制难度
-		return Math.floor(App.MathUtils.Range(0, 6));
+		return Math.floor(App.MathUtils.Range(0, 4));
 	}
 
 	public genInitGridId(row: number, column: number) {

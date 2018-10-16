@@ -192,10 +192,10 @@ var App = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(App, "GameLoading", {
+    Object.defineProperty(App, "SmallLoading", {
         /** 通用Loading动画 */
         get: function () {
-            return GameLoading.Instance();
+            return SmallLoading.Instance();
         },
         enumerable: true,
         configurable: true
@@ -293,10 +293,8 @@ var App = (function () {
     });
     /** 初始化函数 */
     App.Init = function () {
-        //全局配置数据
-        App.GlobalData = RES.getRes("global");
         //开启调试
-        App.DebugUtils.isOpen(App.GlobalData.IsDebug);
+        App.DebugUtils.isOpen(ext.getIsDebug());
         App.DebugUtils.setThreshold(5);
         //扩展功能初始化
         App.EgretExpandUtils.init();
@@ -305,8 +303,7 @@ var App = (function () {
     };
     /** 请求服务器使用的用户标识 */
     App.ProxyUserFlag = "";
-    /** 全局配置数据 */
-    App.GlobalData = null;
     return App;
 }());
 __reflect(App.prototype, "App");
+//# sourceMappingURL=App.js.map

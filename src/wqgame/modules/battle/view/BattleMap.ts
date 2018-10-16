@@ -52,6 +52,13 @@ class BattleMap extends BaseEuiView {
 			self._model.mapItemDic.Add(parseInt(levelItem.txt_index.text), levelItem);
 			mapCon.addChild(levelItem);
 		}
+		for (let k: number = 1; k < mapCon.$children.length; k++) {
+			let item: MapBtnItem = <MapBtnItem>mapCon.getChildAt(k);
+			if (item.headImg.visible) {
+				mapCon.setChildIndex(item, mapCon.numChildren);
+				break;
+			}
+		}
 	}
 
 	/** 添加新地图 */
@@ -75,7 +82,6 @@ class BattleMap extends BaseEuiView {
 		let path: string = PathConfig.MapPath.replace("{0}", icon + "");
 		App.DisplayUtils.addAsyncBitmapToImage(path, mapIcon);
 		mapCon.addChild(mapIcon);
-		mapCon.cacheAsBitmap = true;
 		return mapCon;
 	}
 

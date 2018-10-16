@@ -1,5 +1,4 @@
 class SkinName {
-	public static LoadingUISkin: string = "resource/skins/loading/LoadingUISkin.exml";
 
 	public static LoginViewSkin: string = "resource/skins/login/LoginViewSkin.exml";
 

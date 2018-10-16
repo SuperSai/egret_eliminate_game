@@ -59,25 +59,32 @@ class BattleView extends BaseEuiView {
 		// self.scroller.removeEventListener(egret.Event.CHANGE, self.onMapChange, self);
 	}
 
-	private onMapChange(): void {
-		let self = this;
-		//已经滑动到顶部
-		if (self.scroller.viewport.scrollV == 0) {
-			let maxMission: number = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
-			if (self._model.mapItemDic.ContainsKey(maxMission)) {
-				if ((<MapBtnItem>self._model.mapItemDic.TryGetValue(maxMission)).isListener) {
-					self.map.addMap();
-					self.scroller.viewport.validateNow();
-				}
-			}
-		}
-	}
+	// private onMapChange(): void {
+	// 	let self = this;
+	// 	//已经滑动到顶部
+	// 	if (self.scroller.viewport.scrollV == 0) {
+	// 		let maxMission: number = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
+	// 		if (self._model.mapItemDic.ContainsKey(maxMission)) {
+	// 			if ((<MapBtnItem>self._model.mapItemDic.TryGetValue(maxMission)).isListener) {
+	// 				self.map.addMap();
+	// 				self.scroller.viewport.validateNow();
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	/** 更新地图Item数据 */
 	private onUpdateMapItem(): void {
 		let self = this;
-		(<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission)).initState();
-		(<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1)).initState();
+		let oldItem: MapBtnItem = (<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission - 1));
+		oldItem.headState(false, () => {
+			oldItem.initState();
+			let newItem: MapBtnItem = (<MapBtnItem>self._model.mapItemDic.TryGetValue(App.PlayerInfoManager.Info.data.topMission));
+			newItem.parent.setChildIndex(newItem, newItem.parent.numChildren);
+			newItem.headState(true, () => {
+				newItem.initState();
+			})
+		})
 		if (self.checkIsEnterNextMap()) {
 			self.map.addMap();
 			self.scroller.viewport.validateNow();
@@ -89,7 +96,7 @@ class BattleView extends BaseEuiView {
 		let self = this;
 		let maxMission: number = self._model.getMapIndex(App.PlayerInfoManager.Info.data.topMission) * 2 * 10;
 		if (self._model.mapItemDic.ContainsKey(maxMission)) {
-			if ((<MapBtnItem>self._model.mapItemDic.TryGetValue(maxMission)).isListener) {
+			if ((<MapBtnItem>self._model.mapItemDic.TryGetValue(maxMission)).isPass) {
 				return true;
 			}
 		}

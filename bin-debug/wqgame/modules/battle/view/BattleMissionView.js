@@ -225,3 +225,4 @@ var BattleMissionView = (function (_super) {
     return BattleMissionView;
 }(BaseEuiView));
 __reflect(BattleMissionView.prototype, "BattleMissionView");
+//# sourceMappingURL=BattleMissionView.js.map

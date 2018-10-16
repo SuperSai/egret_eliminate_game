@@ -22,7 +22,6 @@ class BattleWinView extends BaseEuiAlert {
 		self._model = param[0];
 		self.txt_mission.text = App.LanguageManager.getLanguageText("battle.txt.01", self._model.enterMission);
 		App.PlayerInfoManager.Info.saveMission(self._model.enterMission + 1);
-		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.MAP_ITEM_UPDATE);
 	}
 
 	public addEvents(): void {
@@ -53,5 +52,11 @@ class BattleWinView extends BaseEuiAlert {
 		let self = this;
 		App.ViewManager.close(ViewConst.BattleWinPanel);
 		App.ViewManager.close(ViewConst.BattleMission);
+	}
+
+	public close(...param: any[]): void {
+		super.close(param);
+		let self = this;
+		App.ControllerManager.applyFunc(ControllerConst.Battle, BattleConst.MAP_ITEM_UPDATE);
 	}
 }
